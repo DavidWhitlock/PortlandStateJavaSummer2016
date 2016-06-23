@@ -31,7 +31,22 @@ public class StudentTest
   }
 
   private Student createStudentWithName(String name) {
-    return new Student(name, new ArrayList(), 0.0, "Doesn't matter");
+    return createStudentWithNameAndGpa(name, 0.0);
+  }
+
+  @Test
+  public void studentDescriptionContainsGPA() {
+    double gpa = 1.23;
+    Student student = createStudentWithGPA(gpa);
+    assertThat(student.toString(), containsString(String.valueOf(gpa)));
+  }
+
+  private Student createStudentWithGPA(double gpa) {
+    return createStudentWithNameAndGpa("Name", gpa);
+  }
+
+  private Student createStudentWithNameAndGpa(String name, double gpa) {
+    return new Student(name, new ArrayList(), gpa, "Doesn't matter");
   }
 
 }
