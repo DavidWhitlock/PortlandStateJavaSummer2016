@@ -10,3 +10,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Ignore the Maven "target" directory because it contain build artifacts, not
+# code.
+*/target
+
+# Ignore IntelliJ files
+*/*.iml
+*/*.ipr
+*/*.iws
