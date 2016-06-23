@@ -39,7 +39,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    throw new UnsupportedOperationException("Not implemented yet");
+    return "Pat";
   }
 
   /**
