@@ -13,7 +13,7 @@ hs_err_pid*
 
 # Ignore the Maven "target" directory because it contain build artifacts, not
 # code.  Similarly, ignore the generated "dependency-reduced-pom.xml" file.
-*/target
+target
 */dependency-reduced-pom.xml
 
 # Ignore IntelliJ files
@@ -21,3 +21,6 @@ hs_err_pid*
 */*.ipr
 */*.iws
 */.idea
+
+# Ignore emacs backups
+*.~*
