@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>CS410J Appointment Book Project - Checkstyle report</title>
+    <link>http://www.cs.pdx.edu/~whitlock</link>
+    <description>CS410J Appointment Book Project - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2000 - 2016 Portland State University</copyright>
+    <item>
+      <title>File: 3,
+             Errors: 21,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://www.cs.pdx.edu/~whitlock/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.whitlock.Appointment.java">edu/pdx/cs410J/whitlock/Appointment.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.whitlock.Project1.java">edu/pdx/cs410J/whitlock/Project1.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://www.cs.pdx.edu/~whitlock/checkstyle.html#edu.pdx.cs410J.whitlock.AppointmentBook.java">edu/pdx/cs410J/whitlock/AppointmentBook.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
