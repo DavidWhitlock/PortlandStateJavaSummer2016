@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>CS410J</artifactId>
+    <groupId>edu.pdx.cs410J</groupId>
+    <version>Summer2016</version>
+  </parent>
+  <groupId>edu.pdx.cs410J</groupId>
+  <version>Summer2016</version>
+  <artifactId>PortlandStateJavaSummer2016</artifactId>
+  <packaging>pom</packaging>
+  <name>PortlandStateJavaSummer2016</name>
+  <description>Code that we developed in CS410J/CS510J Advanced Java Programming during the Summer of 2016</description>
+  <url>http://davidwhitlock.github.io/PortlandStateJavaSummer2016</url>
+  <modules>
+    <module>apptbook</module>
+    <module>koans</module>
+    <module>student</module>
+  </modules>
+  <inceptionYear>2016</inceptionYear>
+  <organization>
+    <name>Portland State University</name>
+    <url>http://www.pdx.edu</url>
+  </organization>
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/DavidWhitlock/PortlandStateJavaSummer2016/issues</url>
+  </issueManagement>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>whitlock</id>
+      <name>David Whitlock</name>
+      <email>whitlock@cs.pdx.edu</email>
+      <url>http://www.cs.pdx.edu/~whitlock</url>
+      <organization>PSU Department of Computer Science</organization>
+      <organizationUrl>http://www.cs.pdx.edu</organizationUrl>
+      <roles>
+        <role>Professor</role>
+      </roles>
+      <timezone>-7</timezone>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git@github.com:DavidWhitlock/PortlandStateJavaSummer2015.git</connection>
+  </scm>
+  <properties>
+    <github.global.server>github</github.global.server>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.3</version>
+          <dependencies>
+              <dependency>
+                  <groupId>net.trajano.wagon</groupId>
+                  <artifactId>wagon-git</artifactId>
+                  <version>2.0.0</version>
+              </dependency>
+          </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+  <distributionManagement>
+    <site>
+      <id>gh-pages</id>
+      <name>Trajano GitHub Pages</name>
+      <url>github:http://davidwhitlock.github.io/PortlandStateJavaSummer2016/</url>
+      <!--
+      <url>git:ssh://git@github.com/trajano/trajano.git?gh-pages#</url>
+      -->
+    </site>
+  </distributionManagement>
+</project>
