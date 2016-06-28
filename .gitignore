@@ -20,7 +20,7 @@ target
 */*.iml
 */*.ipr
 */*.iws
-*/.idea
+.idea
 
 # Ignore emacs backups
 *.~*
