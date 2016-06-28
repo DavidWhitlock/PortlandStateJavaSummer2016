@@ -17,9 +17,9 @@ target
 */dependency-reduced-pom.xml
 
 # Ignore IntelliJ files
-*/*.iml
-*/*.ipr
-*/*.iws
+*.iml
+*.ipr
+*.iws
 .idea
 
 # Ignore emacs backups
