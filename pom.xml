@@ -62,10 +62,11 @@
     </repository>
   </repositories>
   <build>
+      <pluginManagement>
     <plugins>
       <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.3</version>
+          <version>3.5.1</version>
           <dependencies>
               <dependency>
                   <groupId>net.trajano.wagon</groupId>
@@ -75,6 +76,21 @@
           </dependencies>
       </plugin>
     </plugins>
+      </pluginManagement>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-site-plugin</artifactId>
+              <executions>
+                  <execution>
+                      <id>attach-descriptor</id>
+                      <goals>
+                          <goal>attach-descriptor</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
   </build>
   <distributionManagement>
     <site>
