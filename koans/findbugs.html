@@ -168,7 +168,7 @@
 <th>Missing Classes</th></tr>
 <tr class="b">
 <td>97</td>
-<td>278</td>
+<td>281</td>
 <td>0</td>
 <td>0</td></tr></table></div>
 <div class="section">
@@ -254,7 +254,7 @@
 <td>3</td></tr>
 <tr class="a">
 <td><a href="#intermediate.AboutFileIO">intermediate.AboutFileIO</a></td>
-<td>10</td></tr>
+<td>13</td></tr>
 <tr class="b">
 <td><a href="#intermediate.AboutInnerClasses">intermediate.AboutInnerClasses</a></td>
 <td>10</td></tr>
@@ -1861,30 +1861,48 @@
 <td><a href="./xref/intermediate/AboutFileIO.html#L84">84</a></td>
 <td>High</td></tr>
 <tr class="b">
+<td>Call to Integer.equals(String) in intermediate.AboutFileIO.basicFileWritingAndReading()</td>
+<td>CORRECTNESS</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
+<td><a href="./xref/intermediate/AboutFileIO.html#L42">42</a></td>
+<td>High</td></tr>
+<tr class="a">
+<td>Call to Boolean.equals(String) in intermediate.AboutFileIO.fileCreationAndDeletion()</td>
+<td>CORRECTNESS</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
+<td><a href="./xref/intermediate/AboutFileIO.html#L23">23</a></td>
+<td>High</td></tr>
+<tr class="b">
+<td>Call to Boolean.equals(String) in intermediate.AboutFileIO.fileObjectDoesntCreateFile()</td>
+<td>CORRECTNESS</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
+<td><a href="./xref/intermediate/AboutFileIO.html#L16">16</a></td>
+<td>High</td></tr>
+<tr class="a">
 <td>intermediate.AboutFileIO.basicFileWritingAndReading() may fail to clean up java.io.Reader on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
 <td><a href="./xref/intermediate/AboutFileIO.html#L38">38</a></td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>intermediate.AboutFileIO.basicFileWritingAndReading() may fail to clean up java.io.Writer on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
 <td><a href="./xref/intermediate/AboutFileIO.html#L31">31</a></td>
 <td>Medium</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Exceptional return value of java.io.File.delete() ignored in intermediate.AboutFileIO.basicFileWritingAndReading()</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE</a></td>
 <td><a href="./xref/intermediate/AboutFileIO.html#L44">44</a></td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Exceptional return value of java.io.File.createNewFile() ignored in intermediate.AboutFileIO.fileCreationAndDeletion()</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE</a></td>
 <td><a href="./xref/intermediate/AboutFileIO.html#L22">22</a></td>
 <td>Medium</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Exceptional return value of java.io.File.delete() ignored in intermediate.AboutFileIO.fileCreationAndDeletion()</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE</a></td>
@@ -1893,67 +1911,67 @@
 <div class="section">
 <h3><a name="intermediate.AboutInnerClasses"></a>intermediate.AboutInnerClasses</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>instanceof will always return true for all non-null values in intermediate.AboutInnerClasses.innerClassAndInheritance(), since all intermediate.AboutInnerClasses$Inner are instances of intermediate.AboutInnerClasses$Inner</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_VACUOUS_INSTANCEOF">BC_VACUOUS_INSTANCEOF</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L114">114</a></td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>instanceof will always return true for all non-null values in intermediate.AboutInnerClasses.innerClassAndInheritanceOther(), since all intermediate.AboutInnerClasses$OtherInner are instances of intermediate.AboutInnerClasses</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_VACUOUS_INSTANCEOF">BC_VACUOUS_INSTANCEOF</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L125">125</a></td>
 <td>Medium</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.accessingOuterClassMembers()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L41">41</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.creatingAnonymousInnerClasses()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L90">90</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Boolean.equals(String) in intermediate.AboutInnerClasses.innerClassAndInheritance()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L114">114</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Boolean.equals(String) in intermediate.AboutInnerClasses.innerClassAndInheritanceOther()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L125">125</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.innerClassesInMethods()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L51">51</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.innerClassesInMethodsThatEscape()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L74">74</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.staticInnerClass()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutInnerClasses.html#L137">137</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in intermediate.AboutInnerClasses.staticInnerClassFullyQualified()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
@@ -1962,13 +1980,13 @@
 <div class="section">
 <h3><a name="intermediate.AboutInnerClassesOtherInner"></a>intermediate.AboutInnerClasses$OtherInner</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Should intermediate.AboutInnerClasses$OtherInner be a _static_ inner class?</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC</a></td>
@@ -1977,43 +1995,43 @@
 <div class="section">
 <h3><a name="intermediate.AboutRegularExpressions"></a>intermediate.AboutRegularExpressions</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Boolean.equals(String) in intermediate.AboutRegularExpressions.basicMatching()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutRegularExpressions.html#L20">20</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutRegularExpressions.basicMatching()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutRegularExpressions.html#L21">21</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Boolean.equals(String) in intermediate.AboutRegularExpressions.escapingMetaCharacters()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutRegularExpressions.html#L45">45</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutRegularExpressions.escapingMetaCharacters()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutRegularExpressions.html#L46">46</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Boolean.equals(String) in intermediate.AboutRegularExpressions.extendedMatching()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/intermediate/AboutRegularExpressions.html#L32">32</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutRegularExpressions.extendedMatching()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
@@ -2022,13 +2040,13 @@
 <div class="section">
 <h3><a name="intermediate.AboutSerialization"></a>intermediate.AboutSerialization</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in intermediate.AboutSerialization.customObjectSerialization()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
@@ -2037,25 +2055,25 @@
 <div class="section">
 <h3><a name="intermediate.AboutSerializationBoat"></a>intermediate.AboutSerialization$Boat</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>Class intermediate.AboutSerialization$Boat defines non-transient non-serializable instance field engine</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD">SE_BAD_FIELD</a></td>
 <td>Not available</td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>intermediate.AboutSerialization$Boat is serializable but also an inner class of a non-serializable class</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD_INNER_CLASS">SE_BAD_FIELD_INNER_CLASS</a></td>
 <td><a href="./xref/intermediate/AboutSerialization.html#L114">114</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Should intermediate.AboutSerialization$Boat be a _static_ inner class?</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC</a></td>
@@ -2064,13 +2082,13 @@
 <div class="section">
 <h3><a name="intermediate.AboutSerializationCar"></a>intermediate.AboutSerialization$Car</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>intermediate.AboutSerialization$Car is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
@@ -2079,31 +2097,31 @@
 <div class="section">
 <h3><a name="java7.AboutDiamondOperator"></a>java7.AboutDiamondOperator</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>Dead store to animals in java7.AboutDiamondOperator.diamondOperatorInMethodCall()</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE</a></td>
 <td><a href="./xref/java7/AboutDiamondOperator.html#L24">24</a></td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to java.util.List&lt;java.lang.String&gt;.equals(String) in java7.AboutDiamondOperator.diamondOperatorInMethodCall()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_CLASS_AND_INTERFACE">EC_UNRELATED_CLASS_AND_INTERFACE</a></td>
 <td><a href="./xref/java7/AboutDiamondOperator.html#L27">27</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to java.util.ArrayList&lt;java.lang.String&gt;.equals(String) in java7.AboutDiamondOperator.diamondOperator()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java7/AboutDiamondOperator.html#L19">19</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Useless object stored in variable animals of method java7.AboutDiamondOperator.diamondOperatorInMethodCall()</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#UC_USELESS_OBJECT">UC_USELESS_OBJECT</a></td>
@@ -2112,37 +2130,37 @@
 <div class="section">
 <h3><a name="java7.AboutJava7LiteralsEnhancements"></a>java7.AboutJava7LiteralsEnhancements</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Short.equals(String) in java7.AboutJava7LiteralsEnhancements.binaryLiterals()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java7/AboutJava7LiteralsEnhancements.html#L14">14</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in java7.AboutJava7LiteralsEnhancements.binaryLiteralsWithBitwiseOperator()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java7/AboutJava7LiteralsEnhancements.html#L41">41</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Short.equals(String) in java7.AboutJava7LiteralsEnhancements.binaryLiteralsWithUnderscores()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java7/AboutJava7LiteralsEnhancements.html#L21">21</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Integer.equals(String) in java7.AboutJava7LiteralsEnhancements.negativeBinaryLiteral()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java7/AboutJava7LiteralsEnhancements.html#L35">35</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Long.equals(String) in java7.AboutJava7LiteralsEnhancements.numericLiteralsWithUnderscores()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
@@ -2151,19 +2169,19 @@
 <div class="section">
 <h3><a name="java7.AboutStringsInSwitch"></a>java7.AboutStringsInSwitch</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Switch statement found in java7.AboutStringsInSwitch.stringsInSwitchStatement() where one case falls through to the next case</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SF_SWITCH_FALLTHROUGH">SF_SWITCH_FALLTHROUGH</a></td>
 <td><a href="./xref/java7/AboutStringsInSwitch.html#L18">18-23</a></td>
 <td>Medium</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Switch statement found in java7.AboutStringsInSwitch.stringsInSwitchStatement() where default case is missing</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT</a></td>
@@ -2172,43 +2190,43 @@
 <div class="section">
 <h3><a name="java7.AboutTryWithResources"></a>java7.AboutTryWithResources</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoClose(): new java.io.InputStreamReader(InputStream)</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
 <td><a href="./xref/java7/AboutTryWithResources.html#L42">42</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoClose(): String.getBytes()</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
 <td><a href="./xref/java7/AboutTryWithResources.html#L39">39</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoCloseWithException(): new java.io.FileReader(String)</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
 <td><a href="./xref/java7/AboutTryWithResources.html#L56">56</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoCloseWithMultipleResources(): new java.io.FileReader(String)</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
 <td><a href="./xref/java7/AboutTryWithResources.html#L74">74</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoCloseWithMultipleResources(): new java.io.InputStreamReader(InputStream)</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
 <td><a href="./xref/java7/AboutTryWithResources.html#L77">77</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Found reliance on default encoding in java7.AboutTryWithResources.lookMaNoCloseWithMultipleResources(): String.getBytes()</td>
 <td>I18N</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING</a></td>
@@ -2217,13 +2235,13 @@
 <div class="section">
 <h3><a name="java7.AboutTryWithResourcesCloseException"></a>java7.AboutTryWithResources$CloseException</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Should java7.AboutTryWithResources$CloseException be a _static_ inner class?</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC</a></td>
@@ -2232,13 +2250,13 @@
 <div class="section">
 <h3><a name="java7.AboutTryWithResourcesWorkException"></a>java7.AboutTryWithResources$WorkException</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Should java7.AboutTryWithResources$WorkException be a _static_ inner class?</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC</a></td>
@@ -2247,13 +2265,13 @@
 <div class="section">
 <h3><a name="java8.AboutMultipleInheritanceMinotaur"></a>java8.AboutMultipleInheritance$Minotaur</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Should java8.AboutMultipleInheritance$Minotaur be a _static_ inner class?</td>
 <td>PERFORMANCE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC</a></td>
@@ -2262,19 +2280,19 @@
 <div class="section">
 <h3><a name="java8.AboutOptional"></a>java8.AboutOptional</h3>
 <table border="0" class="table table-striped">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Boolean.equals(String) in java8.AboutOptional.ifPresentLambda()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutOptional.html#L28">28</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Boolean.equals(String) in java8.AboutOptional.isPresent()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
@@ -2283,55 +2301,55 @@
 <div class="section">
 <h3><a name="java8.AboutStreams"></a>java8.AboutStreams</h3>
 <table border="0" class="table table-striped">
-<tr class="a">
+<tr class="b">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="b">
+<tr class="a">
 <td>Dead store to stream in java8.AboutStreams.lazyEvaluation()</td>
 <td>STYLE</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L115">115</a></td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to java.util.List&lt;java.lang.Integer&gt;.equals(String) in java8.AboutStreams.rangeToList()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_CLASS_AND_INTERFACE">EC_UNRELATED_CLASS_AND_INTERFACE</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L133">133</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Long.equals(String) in java8.AboutStreams.filteredCount()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L30">30</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in java8.AboutStreams.limitSkip()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L109">109</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Double.equals(String) in java8.AboutStreams.mapReduce()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L91">91</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in java8.AboutStreams.parallelMapReduce()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L99">99</a></td>
 <td>High</td></tr>
-<tr class="b">
+<tr class="a">
 <td>Call to Long.equals(String) in java8.AboutStreams.simpleCount()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
 <td><a href="./xref/java8/AboutStreams.html#L22">22</a></td>
 <td>High</td></tr>
-<tr class="a">
+<tr class="b">
 <td>Call to Integer.equals(String) in java8.AboutStreams.sumRange()</td>
 <td>CORRECTNESS</td>
 <td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EC_UNRELATED_TYPES">EC_UNRELATED_TYPES</a></td>
