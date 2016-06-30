@@ -53,8 +53,20 @@ public class StudentTest
   @Test
   public void studentWithZeroClasses() {
     ArrayList<String> classes = new ArrayList<>();
-    Student student = new Student("Name", classes, 3.64, "Doesn't matter");
-    assertThat(student.toString(), containsString("0 classes"));
+    Student student = createStudentWithClasses(classes);
+    assertThat(student.toString(), containsString("0 class(es)"));
+  }
+
+  @Test
+  public void studentWithOneClass() {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Java");
+    Student student = createStudentWithClasses(classes);
+    assertThat(student.toString(), containsString("1 class(es)"));
+  }
+
+  private Student createStudentWithClasses(ArrayList<String> classes) {
+    return new Student("Name", classes, 3.64, "Doesn't matter");
   }
 
   @Ignore
