@@ -76,8 +76,11 @@ public class StudentTest
   }
 
   @Test
-  public void toStringContainsNamesOfClasses() {
-
+  public void toStringContainsNamesOfOneClass() {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Java");
+    Student student = createStudentWithClasses(classes);
+    assertThat(student.toString(), containsString("1 class: Java"));
   }
 
   private Student createStudentWithClasses(ArrayList<String> classes) {
