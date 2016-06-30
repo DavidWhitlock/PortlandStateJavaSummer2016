@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -18,6 +17,8 @@ import static org.hamcrest.core.IsEqual.equalTo;
  */
 public class StudentTest
 {
+
+  static final String DEFAULT_GENDER = "female";
 
   @Test
   public void studentNamedPatIsNamedPat() {
@@ -49,14 +50,14 @@ public class StudentTest
   }
 
   private Student createStudentWithNameAndGpa(String name, double gpa) {
-    return new Student(name, new ArrayList<>(), gpa, "Doesn't matter");
+    return new Student(name, new ArrayList<>(), gpa, DEFAULT_GENDER);
   }
 
   @Test
   public void studentWithZeroClasses() {
     ArrayList<String> classes = new ArrayList<>();
     Student student = createStudentWithClasses(classes);
-    assertThat(student.toString(), endsWith("0 classes."));
+    assertThat(student.toString(), containsString("0 classes."));
   }
 
   @Test
@@ -105,7 +106,7 @@ public class StudentTest
   }
 
   private Student createStudentWithClasses(ArrayList<String> classes) {
-    return new Student("Name", classes, 3.64, "Doesn't matter");
+    return new Student("Name", classes, 3.64, DEFAULT_GENDER);
   }
 
   @Test
@@ -136,6 +137,18 @@ public class StudentTest
     Student male = createStudentWithGender("female");
     assertThat(male.toString(), containsString("She"));
   }
+
+//  @Test
+//  public void allCapsMaleStudentHasMalePronounInToString() {
+//    Student male = createStudentWithGender("MALE");
+//    assertThat(male.toString(), containsString("He"));
+//  }
+//
+//  @Test
+//  public void allCapsFemaleStudentHasFemalePronounInToString() {
+//    Student male = createStudentWithGender("FEMALE");
+//    assertThat(male.toString(), containsString("She"));
+//  }
 
   private Student createStudentWithGender(String gender) {
     return new Student("", new ArrayList<>(), 1.23, gender);
