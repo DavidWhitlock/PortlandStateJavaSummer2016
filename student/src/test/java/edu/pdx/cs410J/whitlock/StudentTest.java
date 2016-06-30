@@ -1,13 +1,10 @@
 package edu.pdx.cs410J.whitlock;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.endsWith;
-import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -155,12 +152,17 @@ public class StudentTest
     return new Student("", new ArrayList<>(), 1.23, gender);
   }
 
+  @Test
   public void allStudentsSayThisClassIsTooMuchWork() {
     Student dave = getDaveStudent();
     assertThat(dave.toString(), endsWith("\"This class is too much work\"."));
   }
 
-  @Ignore
+  @Test(expected = InvalidGenderException.class)
+  public void whenGenderIsNeitherMaleNorFemaleAnInvalidGenderExceptionIsThrown() {
+    createStudentWithGender("asdhfjlsa");
+  }
+
   @Test
   public void allStudentAttributesAreIncludedInToString() {
     Student dave = getDaveStudent();

@@ -47,7 +47,7 @@ public class Student extends Human {
       return Gender.FEMALE;
 
     } else {
-      throw new IllegalArgumentException("I don't about the " + gender + " gender");
+      throw new InvalidGenderException("I don't about the " + gender + " gender");
     }
   }
 
