@@ -56,7 +56,7 @@ public class Student extends Human {
    */
   @Override
   public String says() {                                                            
-    throw new UnsupportedOperationException("Not implemented yet");
+    return "This class is too much work";
   }
 
   /**
@@ -65,7 +65,8 @@ public class Student extends Human {
    */
   public String toString() {
     return getName() + " has a GPA of " + gpa + " and is taking " +
-      formatNumberOfClasses() + formatClassNames() + " " + getGenderPronoun();
+      formatNumberOfClasses() + formatClassNames() + " " + getGenderPronoun() +
+      " says \"" + says() + "\".";
   }
 
   private String getGenderPronoun() {

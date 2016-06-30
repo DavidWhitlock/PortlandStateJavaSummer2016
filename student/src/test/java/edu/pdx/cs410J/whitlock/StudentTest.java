@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -152,6 +153,11 @@ public class StudentTest
 
   private Student createStudentWithGender(String gender) {
     return new Student("", new ArrayList<>(), 1.23, gender);
+  }
+
+  public void allStudentsSayThisClassIsTooMuchWork() {
+    Student dave = getDaveStudent();
+    assertThat(dave.toString(), endsWith("\"This class is too much work\"."));
   }
 
   @Ignore
