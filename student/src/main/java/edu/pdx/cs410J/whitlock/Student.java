@@ -40,10 +40,10 @@ public class Student extends Human {
   }
 
   private Gender getGenderForString(String gender) {
-    if (gender.equals("male")) {
+    if (gender.equalsIgnoreCase("male")) {
       return Gender.MALE;
 
-    } else if (gender.equals("female")) {
+    } else if (gender.equalsIgnoreCase("female")) {
       return Gender.FEMALE;
 
     } else {
