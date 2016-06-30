@@ -50,10 +50,23 @@ public class Student extends Human {
 
   private String formatClassNames() {
     String s = "";
-    for (String className : this.classes) {
+    int numberOfClasses = this.classes.size();
+    for (int i = 0; i < numberOfClasses; i++) {
+      String className = this.classes.get(i);
       s += className;
+
+      if (numberOfClasses > 2 && i != numberOfClasses - 1) {
+        s += ",";
+      }
+
+      if (i == numberOfClasses - 2) {
+        s += " and ";
+
+      } else if (i != numberOfClasses - 1) {
+        s += " ";
+      }
     }
-    return s;
+    return s + '.';
   }
 
   private String formatNumberOfClasses() {
