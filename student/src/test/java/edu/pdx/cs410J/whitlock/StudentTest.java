@@ -54,7 +54,7 @@ public class StudentTest
   public void studentWithZeroClasses() {
     ArrayList<String> classes = new ArrayList<>();
     Student student = createStudentWithClasses(classes);
-    assertThat(student.toString(), containsString("0 class(es)"));
+    assertThat(student.toString(), containsString("0 classes."));
   }
 
   @Test
@@ -62,7 +62,22 @@ public class StudentTest
     ArrayList<String> classes = new ArrayList<>();
     classes.add("Java");
     Student student = createStudentWithClasses(classes);
-    assertThat(student.toString(), containsString("1 class(es)"));
+    assertThat(student.toString(), containsString("1 class:"));
+  }
+
+  @Test
+  public void studentWithThreeClasses() {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Algorithms");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    Student student = createStudentWithClasses(classes);
+    assertThat(student.toString(), containsString("3 classes:"));
+  }
+
+  @Test
+  public void toStringContainsNamesOfClasses() {
+
   }
 
   private Student createStudentWithClasses(ArrayList<String> classes) {

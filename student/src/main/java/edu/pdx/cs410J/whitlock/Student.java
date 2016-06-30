@@ -45,7 +45,22 @@ public class Student extends Human {
    * <code>Student</code>.
    */
   public String toString() {
-    return getName() + gpa + classes.size() + " class(es)";
+    return getName() + gpa + formatNumberOfClasses();
+  }
+
+  private String formatNumberOfClasses() {
+    int numberOfClasses = classes.size();
+
+    switch (numberOfClasses) {
+      case 0:
+        return "0 classes.";
+
+      case 1:
+        return "1 class:";
+
+      default:
+        return numberOfClasses + " classes:";
+    }
   }
 
   /**
