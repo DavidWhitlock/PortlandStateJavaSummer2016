@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -46,7 +47,28 @@ public class StudentTest
   }
 
   private Student createStudentWithNameAndGpa(String name, double gpa) {
-    return new Student(name, new ArrayList(), gpa, "Doesn't matter");
+    return new Student(name, new ArrayList<>(), gpa, "Doesn't matter");
+  }
+
+  @Test
+  public void studentWithZeroClasses() {
+    ArrayList<String> classes = new ArrayList<>();
+    Student student = new Student("Name", classes, 3.64, "Doesn't matter");
+    assertThat(student.toString(), containsString("0 classes"));
+  }
+
+  @Ignore
+  @Test
+  public void allStudentAttributesAreIncludedInToString() {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Algorithms");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    Student dave = new Student("Dave", classes, 3.64, "male");
+
+    String expected = "Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating " +
+      "Systems, and Java. He says \"This class is too much work\".";
+    assertThat(dave.toString(), equalTo(expected));
   }
 
 }
