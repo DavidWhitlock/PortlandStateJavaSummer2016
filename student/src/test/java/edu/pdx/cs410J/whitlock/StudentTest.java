@@ -106,14 +106,27 @@ public class StudentTest
     return new Student("Name", classes, 3.64, "Doesn't matter");
   }
 
-  @Ignore
   @Test
-  public void allStudentAttributesAreIncludedInToString() {
+  public void nicelyFormatFirstSentenceOfToString() {
+    Student dave = getDaveStudent();
+
+    String firstSentence = "Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating " +
+      "Systems, and Java.";
+    assertThat(dave.toString(), containsString(firstSentence));
+  }
+
+  private Student getDaveStudent() {
     ArrayList<String> classes = new ArrayList<>();
     classes.add("Algorithms");
     classes.add("Operating Systems");
     classes.add("Java");
-    Student dave = new Student("Dave", classes, 3.64, "male");
+    return new Student("Dave", classes, 3.64, "male");
+  }
+
+  @Ignore
+  @Test
+  public void allStudentAttributesAreIncludedInToString() {
+    Student dave = getDaveStudent();
 
     String expected = "Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating " +
       "Systems, and Java. He says \"This class is too much work\".";
