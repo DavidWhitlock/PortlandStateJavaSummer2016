@@ -46,7 +46,7 @@ public class Student extends Human {
    */
   public String toString() {
     return getName() + " has a GPA of " + gpa + " and is taking " +
-      formatNumberOfClasses() + " " + formatClassNames();
+      formatNumberOfClasses() + formatClassNames();
   }
 
   private String formatClassNames() {
@@ -75,13 +75,13 @@ public class Student extends Human {
 
     switch (numberOfClasses) {
       case 0:
-        return "0 classes.";
+        return "0 classes";
 
       case 1:
-        return "1 class:";
+        return "1 class: ";
 
       default:
-        return numberOfClasses + " classes:";
+        return numberOfClasses + " classes: ";
     }
   }
 

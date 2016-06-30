@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -54,7 +56,7 @@ public class StudentTest
   public void studentWithZeroClasses() {
     ArrayList<String> classes = new ArrayList<>();
     Student student = createStudentWithClasses(classes);
-    assertThat(student.toString(), containsString("0 classes."));
+    assertThat(student.toString(), endsWith("0 classes."));
   }
 
   @Test
@@ -112,7 +114,7 @@ public class StudentTest
 
     String firstSentence = "Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating " +
       "Systems, and Java.";
-    assertThat(dave.toString(), containsString(firstSentence));
+    assertThat(dave.toString(), startsWith(firstSentence));
   }
 
   private Student getDaveStudent() {
