@@ -115,25 +115,37 @@ public class Student extends Human {
    * standard out by invoking its <code>toString</code> method.
    */
   public static void main(String[] args) {
-    if (args.length == 0) {
+    String name = null;
+    String gender = null;
+    String gpa = null;
+    List<String> classes = new ArrayList<>();
+
+    for (String arg : args) {
+      if (name == null) {
+        name = arg;
+
+      } else if (gender == null) {
+        gender = arg;
+
+      } else if (gpa == null) {
+        gpa = arg;
+
+      } else {
+        classes.add(arg);
+      }
+    }
+
+    if (name == null) {
       printErrorMessageAndExit("Missing command line arguments");
 
-    } else if (args.length == 1) {
+    } else if (gender == null) {
       printErrorMessageAndExit("Missing gender");
 
-    } else if (args.length == 2) {
+    } else if (gpa == null) {
       printErrorMessageAndExit("Missing GPA");
     }
 
-    List<String> classes = new ArrayList<>();
-    for (int i = 3; i < args.length; i++) {
-      classes.add(args[i]);
-    }
-
-    String name = args[0];
-    double gpa = parseGPA(args[2]);
-    Gender gender = parseGender(args[1]);
-    Student student = new Student(name, classes, gpa, gender);
+    Student student = new Student(name, classes, parseGPA(gpa), parseGender(gender));
 
     System.out.println(student);
 
