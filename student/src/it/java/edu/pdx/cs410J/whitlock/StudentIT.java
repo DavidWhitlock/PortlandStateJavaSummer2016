@@ -62,6 +62,14 @@ public class StudentIT extends InvokeMainTestCase {
   }
 
   @Test
+  public void invalidGenderPrintsError() {
+    String gender = "BADGENDER";
+    MainMethodResult result = invokeMain(Student.class, "Student", gender, "3.45");
+    assertThat(result.getErr(), containsString("Invalid Gender: " + gender));
+    assertThat(result.getExitCode(), equalTo(1));
+  }
+
+  @Test
   public void endToEndIntegrationTest() {
     MainMethodResult result = invokeMain(Student.class, "Dave", "male", "3.64", "Algorithms", "Operating Systems", "Java");
     String expected = "Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating " +

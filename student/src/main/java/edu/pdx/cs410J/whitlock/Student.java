@@ -134,7 +134,14 @@ public class Student extends Human {
     String name = args[0];
     double gpa = parseGPA(args[2]);
     String gender = args[1];
-    Student student = new Student(name, classes, gpa, gender);
+    Student student;
+    try {
+      student = new Student(name, classes, gpa, gender);
+
+    } catch (InvalidGenderException ex) {
+      printErrorMessageAndExit("Invalid Gender: " + gender);
+      return;
+    }
 
     System.out.println(student);
 
