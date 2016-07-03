@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -55,7 +54,13 @@ public class StudentIT extends InvokeMainTestCase {
     assertThat(result.getExitCode(), equalTo(1));
   }
 
-  @Ignore
+  @Test
+  public void studentTakingOneClass() {
+    MainMethodResult result = invokeMain(Student.class, "Student", "female", "1.23", "Java");
+    assertThat(result.getOut(), containsString("Student has a GPA of 1.23 and is taking 1 class: Java."));
+    assertThat(result.getExitCode(), equalTo(0));
+  }
+
   @Test
   public void endToEndIntegrationTest() {
     MainMethodResult result = invokeMain(Student.class, "Dave", "male", "3.64", "Algorithms", "Operating Systems", "Java");

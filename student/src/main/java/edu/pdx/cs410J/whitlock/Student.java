@@ -126,8 +126,12 @@ public class Student extends Human {
       printErrorMessageAndExit("Missing GPA");
     }
 
-    String name = args[0];
     List<String> classes = new ArrayList<>();
+    for (int i = 3; i < args.length; i++) {
+      classes.add(args[i]);
+    }
+
+    String name = args[0];
     double gpa = parseGPA(args[2]);
     String gender = args[1];
     Student student = new Student(name, classes, gpa, gender);
