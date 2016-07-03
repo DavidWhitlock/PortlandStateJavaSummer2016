@@ -128,7 +128,7 @@ public class Student extends Human {
 
     String name = args[0];
     List<String> classes = new ArrayList<>();
-    double gpa = Double.parseDouble(args[2]);
+    double gpa = parseGPA(args[2]);
     String gender = args[1];
     Student student = new Student(name, classes, gpa, gender);
 
@@ -137,9 +137,20 @@ public class Student extends Human {
     System.exit(0);
   }
 
-  private static void printErrorMessageAndExit(String message) {
+  private static double parseGPA(String gpa) {
+    try {
+      return Double.parseDouble(gpa);
+
+    } catch (NumberFormatException ex) {
+      //noinspection ConstantConditions
+      return printErrorMessageAndExit("Invalid GPA: " + gpa);
+    }
+  }
+
+  private static <T> T printErrorMessageAndExit(String message) {
     System.err.println(message);
     System.exit(1);
+    return null;
   }
 
 }

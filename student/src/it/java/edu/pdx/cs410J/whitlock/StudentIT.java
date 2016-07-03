@@ -47,6 +47,14 @@ public class StudentIT extends InvokeMainTestCase {
     assertThat(result.getExitCode(), equalTo(0));
   }
 
+  @Test
+  public void invalidGPAPrintsError() {
+    String gpa = "BADGPA";
+    MainMethodResult result = invokeMain(Student.class, "Student", "female", gpa);
+    assertThat(result.getErr(), containsString("Invalid GPA: " + gpa));
+    assertThat(result.getExitCode(), equalTo(1));
+  }
+
   @Ignore
   @Test
   public void endToEndIntegrationTest() {
