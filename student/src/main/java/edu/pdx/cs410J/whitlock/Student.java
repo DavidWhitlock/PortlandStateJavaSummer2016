@@ -14,9 +14,20 @@ public class Student extends Human {
   private List<String> classes;
   private Gender gender;
 
-  private enum Gender {
-    FEMALE, MALE
+  enum Gender {
+    FEMALE, MALE;
 
+    public static Gender genderFromString(String gender) {
+      if (gender.equalsIgnoreCase("male")) {
+        return Gender.MALE;
+
+      } else if (gender.equalsIgnoreCase("female")) {
+        return Gender.FEMALE;
+
+      } else {
+        throw new InvalidGenderException("I don't about the " + gender + " gender");
+      }
+    }
   }
 
   /**
@@ -30,29 +41,17 @@ public class Student extends Human {
    * @param gpa                                                                     
    *        The student's grade point average                                       
    * @param gender                                                                  
-   *        The student's gender ("male" or "female", case insensitive)             
+   *        The student's gender
    */                                                                               
-  public Student(String name, List<String> classes, double gpa, String gender) {
+  public Student(String name, List<String> classes, double gpa, Gender gender) {
     super(name);
 
     this.gpa = gpa;
     this.classes = classes;
-    this.gender = getGenderForString(gender);
+    this.gender = gender;
   }
 
-  private Gender getGenderForString(String gender) {
-    if (gender.equalsIgnoreCase("male")) {
-      return Gender.MALE;
-
-    } else if (gender.equalsIgnoreCase("female")) {
-      return Gender.FEMALE;
-
-    } else {
-      throw new InvalidGenderException("I don't about the " + gender + " gender");
-    }
-  }
-
-  /**                                                                               
+  /**
    * All students say "This class is too much work"
    */
   @Override
@@ -133,19 +132,21 @@ public class Student extends Human {
 
     String name = args[0];
     double gpa = parseGPA(args[2]);
-    String gender = args[1];
-    Student student;
-    try {
-      student = new Student(name, classes, gpa, gender);
-
-    } catch (InvalidGenderException ex) {
-      printErrorMessageAndExit("Invalid Gender: " + gender);
-      return;
-    }
+    Gender gender = parseGender(args[1]);
+    Student student = new Student(name, classes, gpa, gender);
 
     System.out.println(student);
 
     System.exit(0);
+  }
+
+  private static Gender parseGender(String gender) {
+    try {
+      return Gender.genderFromString(gender);
+
+    } catch (InvalidGenderException ex) {
+      return printErrorMessageAndExit("Invalid Gender: " + gender);
+    }
   }
 
   private static double parseGPA(String gpa) {

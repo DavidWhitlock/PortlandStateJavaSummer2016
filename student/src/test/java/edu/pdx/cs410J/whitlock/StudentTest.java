@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
+import edu.pdx.cs410J.whitlock.Student.Gender;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class StudentTest
 {
 
-  static final String DEFAULT_GENDER = "female";
+  private static final Gender DEFAULT_GENDER = Gender.FEMALE;
 
   @Test
   public void studentNamedPatIsNamedPat() {
@@ -121,7 +122,7 @@ public class StudentTest
     classes.add("Algorithms");
     classes.add("Operating Systems");
     classes.add("Java");
-    return new Student("Dave", classes, 3.64, "male");
+    return new Student("Dave", classes, 3.64, Gender.MALE);
   }
 
   @Test
@@ -149,7 +150,7 @@ public class StudentTest
   }
 
   private Student createStudentWithGender(String gender) {
-    return new Student("", new ArrayList<>(), 1.23, gender);
+    return new Student("", new ArrayList<>(), 1.23, Gender.genderFromString(gender));
   }
 
   @Test
