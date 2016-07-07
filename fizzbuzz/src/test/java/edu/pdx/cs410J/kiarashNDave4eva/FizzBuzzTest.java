@@ -24,10 +24,27 @@ public class FizzBuzzTest
   }
 
   @Test
+  public void checkFor6() {
+    assertThat(FizzBuzz.getValue(6), equalTo("Fizz"));
+  }
+
+  @Test
   public void checkFor5() {
     assertThat(FizzBuzz.getValue(5), equalTo("Buzz"));
   }
 
+  @Test
+  public void checkFor10() {
+    assertThat(FizzBuzz.getValue(10), equalTo("Buzz"));
+  }
 
+  @Test
+  public void checkFor15() {
+    assertThat(FizzBuzz.getValue(15), equalTo("FizzBuzz"));
+  }
 
+  @Test
+  public void checkFornegative15() {
+    assertThat(FizzBuzz.getValue(-15), equalTo("FizzBuzz"));
+  }
 }
