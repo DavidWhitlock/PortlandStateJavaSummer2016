@@ -36,7 +36,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>edu.pdx.cs410J.kiarashNDave4eva.Student</mainClass>
+              <mainClass>edu.pdx.cs410J.kiarashNDave4eva.FizzBuzz</mainClass>
             </manifest>
           </archive>
         </configuration>
