@@ -4,7 +4,6 @@ import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
 
 /**
@@ -14,16 +13,19 @@ import static org.hamcrest.core.StringContains.containsString;
  */
 public class FizzBuzzIT extends InvokeMainTestCase {
   @Test
-  public void invokingMainWithNoArgumentsHasExitCodeOf1() {
+  public void invokingMainPrintsOutFizzBuzzFor1To5() {
     InvokeMainTestCase.MainMethodResult result = invokeMain(FizzBuzz.class);
-    assertThat(result.getExitCode(), equalTo(1));
+
+    String expected = "1\n2\nFizz\n4\nBuzz";
+    assertThat(result.getOut(), containsString(expected));
   }
 
   @Test
-  public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
+  public void invokingMainPrintsOutFizzBuzzFor10To15() {
     InvokeMainTestCase.MainMethodResult result = invokeMain(FizzBuzz.class);
-    assertThat(result.getErr(), containsString("Missing command line arguments"));
-  }
 
+    String expected = "Buzz\n11\nFizz\n13\n14\nFizzBuzz";
+    assertThat(result.getOut(), containsString(expected));
+  }
 
 }
