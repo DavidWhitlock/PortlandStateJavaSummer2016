@@ -2,8 +2,6 @@ package edu.pdx.cs410J.kiarashNDave4eva;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -16,10 +14,10 @@ public class FizzBuzzTest
 {
 
   @Test
-  public void studentNamedPatIsNamedPat() {
-    String name = "Pat";
-    FizzBuzz pat = new FizzBuzz(name, new ArrayList(), 0.0, "Doesn't matter");
-    assertThat(pat.getName(), equalTo(name));
+  public void checkfor3() {
+    assertThat(FizzBuzz.getValue(3), equalTo("Fizz"));
   }
+
+
 
 }
