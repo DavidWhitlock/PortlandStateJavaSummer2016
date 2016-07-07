@@ -14,8 +14,18 @@ public class FizzBuzzTest
 {
 
   @Test
-  public void checkfor3() {
+  public void checkFor1() {
+    assertThat(FizzBuzz.getValue(1), equalTo("1"));
+  }
+
+  @Test
+  public void checkFor3() {
     assertThat(FizzBuzz.getValue(3), equalTo("Fizz"));
+  }
+
+  @Test
+  public void checkFor5() {
+    assertThat(FizzBuzz.getValue(5), equalTo("Buzz"));
   }
 
 

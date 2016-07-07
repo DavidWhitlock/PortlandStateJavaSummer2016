@@ -1,12 +1,16 @@
 package edu.pdx.cs410J.kiarashNDave4eva;
 
-/**
- * This class is represents a <code>Student</code>.                                 
- */                                                                                 
 public class FizzBuzz {
 
+  static String getValue(int num) {
+    if (num % 5 == 0) {
+      return "Buzz";
 
-  public static String getValue(int num) {
-    return "Fizz";
+    } else if (num % 3 == 0) {
+      return "Fizz";
+
+    } else {
+      return String.valueOf(num);
+    }
   }
 }
