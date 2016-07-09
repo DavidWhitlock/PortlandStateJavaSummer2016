@@ -18,6 +18,7 @@
     <module>koans</module>
     <module>student</module>
     <module>fizzbuzz</module>
+    <module>wordspinner</module>
   </modules>
   <inceptionYear>2016</inceptionYear>
   <organization>
