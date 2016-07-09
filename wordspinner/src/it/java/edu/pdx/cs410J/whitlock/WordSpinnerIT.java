@@ -12,16 +12,16 @@ import static org.hamcrest.core.StringContains.containsString;
  * These tests extend <code>InvokeMainTestCase</code> which allows them
  * to easily invoke the <code>main</code> method of <code>Student</code>.
  */
-public class StudentIT extends InvokeMainTestCase {
+public class WordSpinnerIT extends InvokeMainTestCase {
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
-    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class);
+    InvokeMainTestCase.MainMethodResult result = invokeMain(WordSpinner.class);
     assertThat(result.getExitCode(), equalTo(1));
   }
 
   @Test
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
-    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class);
+    InvokeMainTestCase.MainMethodResult result = invokeMain(WordSpinner.class);
     assertThat(result.getErr(), containsString("Missing command line arguments"));
   }
 
