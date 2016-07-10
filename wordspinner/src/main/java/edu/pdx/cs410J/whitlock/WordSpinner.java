@@ -18,13 +18,28 @@ public class WordSpinner {
     return new StringBuilder(word).reverse().toString();
   }
 
+  static String spinSentence(String sentence, WordSpinnerStrategy strategy) {
+    return strategy.spinSentence(sentence);
+  }
+
   static String spinSentence(String sentence) {
-    String[] words = sentence.split(" ");
-    StringBuilder sb = new StringBuilder();
-    for (String word : words) {
-      sb.append(spinWord(word));
-      sb.append(" ");
+    return spinSentence(sentence, new OriginalStrategy());
+  }
+
+  interface WordSpinnerStrategy {
+    String spinSentence(String sentence);
+  }
+
+  static class OriginalStrategy implements WordSpinnerStrategy {
+    @Override
+    public String spinSentence(String sentence) {
+      String[] words = sentence.split(" ");
+      StringBuilder sb = new StringBuilder();
+      for (String word : words) {
+        sb.append(spinWord(word));
+        sb.append(" ");
+      }
+      return sb.toString().trim();
     }
-    return sb.toString().trim();
   }
 }
