@@ -42,8 +42,10 @@ public class WordSpinnerPerformanceIT extends InvokeMainTestCase {
 
     String original = WordSpinner.spinSentence(sentence, new OriginalStrategy());
     String streams = WordSpinner.spinSentence(sentence, new StreamBasedStrategy());
+    String parallelStreams = WordSpinner.spinSentence(sentence, new ParallelStreamBasedStrategy());
 
     assertThat(streams, equalTo(original));
+    assertThat(parallelStreams, equalTo(original));
   }
 
   @Test
@@ -57,11 +59,14 @@ public class WordSpinnerPerformanceIT extends InvokeMainTestCase {
 
     long durationOldAlgorithm = measureSpinningSentence(sentence, new OriginalStrategy());
     long durationWithStreams = measureSpinningSentence(sentence, new StreamBasedStrategy());
+    long durationWithParallelStreams = measureSpinningSentence(sentence, new ParallelStreamBasedStrategy());
 
     System.out.println("It look " + durationOldAlgorithm + "ms to spin a sentence of length " + sentence.length() + " with original algorithm");
     System.out.println("It look " + durationWithStreams + "ms to spin a sentence of length " + sentence.length() + " with streams");
+    System.out.println("It look " + durationWithParallelStreams + "ms to spin a sentence of length " + sentence.length() + " with parallel streams");
 
     assertThat(durationWithStreams, lessThan(durationOldAlgorithm));
+    assertThat(durationWithParallelStreams, lessThan(durationOldAlgorithm));
   }
 
   private long measureSpinningSentence(String sentence) {

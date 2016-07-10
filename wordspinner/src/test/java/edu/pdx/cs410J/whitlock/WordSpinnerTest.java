@@ -40,6 +40,7 @@ public class WordSpinnerTest
 
     assertThat(WordSpinner.spinSentence(sentence, new WordSpinner.OriginalStrategy()), equalTo(expected));
     assertThat(WordSpinner.spinSentence(sentence, new WordSpinner.StreamBasedStrategy()), equalTo(expected));
+    assertThat(WordSpinner.spinSentence(sentence, new WordSpinner.ParallelStreamBasedStrategy()), equalTo(expected));
 
   }
 

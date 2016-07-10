@@ -2,6 +2,7 @@ package edu.pdx.cs410J.whitlock;
 
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This class is represents a <code>Student</code>.
@@ -51,10 +52,21 @@ public class WordSpinner {
     public String spinSentence(String sentence) {
       Pattern pattern = Pattern.compile(" ");
 
-      return pattern.splitAsStream(sentence)
-//        .parallel()
+      Stream<String> stream = pattern.splitAsStream(sentence);
+      return enableParallel(stream)
         .map(WordSpinner::spinWord)
         .collect(Collectors.joining(" "));
+    }
+
+    protected Stream<String> enableParallel(Stream<String> stream) {
+      return stream;
+    }
+  }
+
+  static class ParallelStreamBasedStrategy extends StreamBasedStrategy {
+    @Override
+    protected Stream<String> enableParallel(Stream<String> stream) {
+      return stream.parallel();
     }
   }
 }
