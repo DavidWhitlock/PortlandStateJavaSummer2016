@@ -33,4 +33,14 @@ public class WordSpinnerTest
     assertThat(WordSpinner.spinSentence(sentence), equalTo(expected));
   }
 
+  @Test
+  public void bothSpinningStrategiesReturnSameResults() {
+    String sentence = "Hey fellow warriors";
+    String expected = "Hey wollef sroirraw";
+
+    assertThat(WordSpinner.spinSentence(sentence, new WordSpinner.OriginalStrategy()), equalTo(expected));
+    assertThat(WordSpinner.spinSentence(sentence, new WordSpinner.StreamBasedStrategy()), equalTo(expected));
+
+  }
+
 }

@@ -5,6 +5,11 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static edu.pdx.cs410J.whitlock.WordSpinner.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThan;
+
 /**
  * Integration tests for the <code>Student</code> class's main method.
  * These tests extend <code>InvokeMainTestCase</code> which allows them
@@ -24,13 +29,50 @@ public class WordSpinnerPerformanceIT extends InvokeMainTestCase {
 
     long duration = measureSpinningSentence(sentence);
     System.out.println("It look " + duration + "ms to spin a sentence of length " + sentence.length());
-    ;
+  }
+
+  @Test
+  public void spinningWordsWithStreamsShouldHaveTheSameResultAsOriginalAlgorithm() {
+    HugeSentenceGenerator generator = new HugeSentenceGenerator();
+    generator.setSentenceLength(10_000_000);
+    generator.setMinimumWordSize(4);
+    generator.setMaximumWordSize(10);
+
+    String sentence = generator.generateSentence();
+
+    String original = WordSpinner.spinSentence(sentence, new OriginalStrategy());
+    String streams = WordSpinner.spinSentence(sentence, new StreamBasedStrategy());
+
+    assertThat(streams, equalTo(original));
+  }
+
+  @Test
+  public void spinningWordsWithStreamsShouldBeFasterThanInitialImplementation() {
+    HugeSentenceGenerator generator = new HugeSentenceGenerator();
+    generator.setSentenceLength(10_000_000);
+    generator.setMinimumWordSize(4);
+    generator.setMaximumWordSize(10);
+
+    String sentence = generator.generateSentence();
+
+    long durationOldAlgorithm = measureSpinningSentence(sentence, new OriginalStrategy());
+    long durationWithStreams = measureSpinningSentence(sentence, new StreamBasedStrategy());
+
+    System.out.println("It look " + durationOldAlgorithm + "ms to spin a sentence of length " + sentence.length() + " with original algorithm");
+    System.out.println("It look " + durationWithStreams + "ms to spin a sentence of length " + sentence.length() + " with streams");
+
+    assertThat(durationWithStreams, lessThan(durationOldAlgorithm));
   }
 
   private long measureSpinningSentence(String sentence) {
+    return measureSpinningSentence(sentence, new OriginalStrategy());
+  }
+
+  private long measureSpinningSentence(String sentence, WordSpinnerStrategy strategy) {
+    System.gc();
     long start = System.currentTimeMillis();
 
-    WordSpinner.spinSentence(sentence);
+    spinSentence(sentence, strategy);
 
     long end = System.currentTimeMillis();
 

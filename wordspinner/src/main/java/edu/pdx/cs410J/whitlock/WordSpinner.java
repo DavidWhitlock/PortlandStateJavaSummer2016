@@ -1,8 +1,11 @@
 package edu.pdx.cs410J.whitlock;
 
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 /**
- * This class is represents a <code>Student</code>.                                 
- */                                                                                 
+ * This class is represents a <code>Student</code>.
+ */
 public class WordSpinner {
 
   static String spinWord(String word) {
@@ -23,7 +26,7 @@ public class WordSpinner {
   }
 
   static String spinSentence(String sentence) {
-    return spinSentence(sentence, new OriginalStrategy());
+    return spinSentence(sentence, new StreamBasedStrategy());
   }
 
   interface WordSpinnerStrategy {
@@ -40,6 +43,18 @@ public class WordSpinner {
         sb.append(" ");
       }
       return sb.toString().trim();
+    }
+  }
+
+  static class StreamBasedStrategy implements WordSpinnerStrategy {
+    @Override
+    public String spinSentence(String sentence) {
+      Pattern pattern = Pattern.compile(" ");
+
+      return pattern.splitAsStream(sentence)
+//        .parallel()
+        .map(WordSpinner::spinWord)
+        .collect(Collectors.joining(" "));
     }
   }
 }
