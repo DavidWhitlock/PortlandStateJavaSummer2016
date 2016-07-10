@@ -5,16 +5,6 @@ package edu.pdx.cs410J.whitlock;
  */                                                                                 
 public class WordSpinner {
 
-  /**
-   * Main program that parses the command line, creates a
-   * <code>Student</code>, and prints a description of the wordspinner to
-   * standard out by invoking its <code>toString</code> method.
-   */
-  public static void main(String[] args) {
-    System.err.println("Missing command line arguments");
-    System.exit(1);
-  }
-
   static String spinWord(String word) {
     if (word.length() >= 5) {
       return reverseWord(word);
