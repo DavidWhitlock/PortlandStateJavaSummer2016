@@ -15,12 +15,12 @@ public class WordSpinnerPerformanceIT extends InvokeMainTestCase {
   @Test
   public void measurePerformanceOfWordSpinnerWithHugeSentence() {
     HugeSentenceGenerator generator = new HugeSentenceGenerator();
-    generator.setSentenceLength(100);
+    generator.setSentenceLength(10_000_000);
     generator.setMinimumWordSize(4);
     generator.setMaximumWordSize(10);
 
     String sentence = generator.generateSentence();
-    System.out.println(sentence);
+//    System.out.println(sentence.length() + ": " + sentence);
 
     long duration = measureSpinningSentence(sentence);
     System.out.println("It look " + duration + "ms to spin a sentence of length " + sentence.length());
@@ -60,22 +60,20 @@ public class WordSpinnerPerformanceIT extends InvokeMainTestCase {
       StringBuilder sb = new StringBuilder(this.sentenceLength);
 
       while (sb.length() <= this.sentenceLength) {
-        sb.append(generateRandomWord());
+        appendRandomWord(sb);
         sb.append(" ");
       }
 
       return sb.toString();
     }
 
-    private String generateRandomWord() {
+    private void appendRandomWord(StringBuilder sb) {
       int wordLength = this.minimumWordSize + this.random.nextInt(maximumWordSize - minimumWordSize);
 
-      StringBuilder sb = new StringBuilder(wordLength);
       for (int i = 0; i < wordLength; i++) {
         sb.append(getRandomLetter());
       }
 
-      return sb.toString();
     }
 
     private char getRandomLetter() {
