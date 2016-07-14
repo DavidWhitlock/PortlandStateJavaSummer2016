@@ -3,6 +3,8 @@ package edu.pdx.cs410J.whitlock;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Stack;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -31,6 +33,13 @@ public class RPNCalculatorTest
     } catch (InvalidRPNExpressionException ex) {
       assertThat(ex.getMessage(), containsString("Invalid expression: " + invalid));
     }
+  }
+
+  @Test
+  public void canParseNumbers() {
+    Stack stack = new RPNCalculator().parseExpression("1 2");
+    assertThat(stack.get(0), equalTo(1));
+    assertThat(stack.get(1), equalTo(2));
   }
 
   @Ignore

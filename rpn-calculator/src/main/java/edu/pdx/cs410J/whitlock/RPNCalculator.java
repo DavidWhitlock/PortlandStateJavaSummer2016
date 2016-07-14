@@ -1,5 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import java.util.Stack;
 
 /**
@@ -7,7 +9,8 @@ import java.util.Stack;
  */                                                                                 
 public class RPNCalculator {
 
-  private Stack parseExpression(String expression) {
+  @VisibleForTesting
+  Stack parseExpression(String expression) {
     Stack stack = new Stack();
 
     if (expression.equals("")) {
