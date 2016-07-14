@@ -15,14 +15,20 @@ public class RPNCalculator {
     }
 
     for (String token : expression.split(" ")) {
-      try {
-        stack.push(Integer.parseInt(token));
-      } catch (NumberFormatException ex) {
-        throw new InvalidRPNExpressionException("Invalid expression: " + token);
-      }
+      stack.push(parseToken(token));
     }
 
     return stack;
+  }
+
+  private Object parseToken(String token) {
+    Object value;
+    try {
+      value = Integer.parseInt(token);
+    } catch (NumberFormatException ex) {
+      throw new InvalidRPNExpressionException("Invalid expression: " + token);
+    }
+    return value;
   }
 
   public int evaluate(String expression) {
