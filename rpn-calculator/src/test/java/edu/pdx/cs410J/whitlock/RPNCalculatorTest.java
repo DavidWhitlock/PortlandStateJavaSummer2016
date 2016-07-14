@@ -48,6 +48,15 @@ public class RPNCalculatorTest
     assertThat(stack.get(0), equalTo(RPNCalculator.Operator.ADDITION));
   }
 
+  @Test
+  public void canParseOperators() {
+    Stack stack = new RPNCalculator().parseExpression("+ - * /");
+    assertThat(stack.get(0), equalTo(RPNCalculator.Operator.ADDITION));
+    assertThat(stack.get(1), equalTo(RPNCalculator.Operator.SUBTRACT));
+    assertThat(stack.get(2), equalTo(RPNCalculator.Operator.MULTIPLY));
+    assertThat(stack.get(3), equalTo(RPNCalculator.Operator.DIVIDE));
+  }
+
   @Ignore
   @Test
   public void oneOperandIssuesError() {

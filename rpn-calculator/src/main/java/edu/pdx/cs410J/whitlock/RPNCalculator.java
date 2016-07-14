@@ -27,8 +27,18 @@ public class RPNCalculator {
   private Object parseToken(String token) {
     Object value;
 
-    if (token.equals("+")) {
-      return Operator.ADDITION;
+    switch (token) {
+      case "+":
+        return Operator.ADDITION;
+
+      case "-":
+        return Operator.SUBTRACT;
+
+      case "*":
+        return Operator.MULTIPLY;
+
+      case "/":
+        return Operator.DIVIDE;
     }
 
     try {
@@ -49,5 +59,5 @@ public class RPNCalculator {
     System.exit(1);
   }
 
-  public enum Operator {ADDITION}
+  public enum Operator {SUBTRACT, MULTIPLY, DIVIDE, ADDITION}
 }
