@@ -5,10 +5,11 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.function.BinaryOperator;
 
 /**
- * This class is represents a <code>Student</code>.                                 
- */                                                                                 
+ * This class is represents a <code>Student</code>.
+ */
 public class RPNCalculator {
 
   @VisibleForTesting
@@ -84,28 +85,20 @@ public class RPNCalculator {
     System.exit(1);
   }
 
-  public enum Operation {SUBTRACT {
-    @Override
-    public int evaluate(int left, int right) {
-      return left - right;
-    }
-  }, MULTIPLY {
-    @Override
-    public int evaluate(int left, int right) {
-      return left * right;
-    }
-  }, DIVIDE {
-    @Override
-    public int evaluate(int left, int right) {
-      return left / right;
-    }
-  }, ADDITION {
-    @Override
-    public int evaluate(int left, int right) {
-      return left + right;
-    }
-  };
+  public enum Operation {
+    SUBTRACT((l, r) -> l - r),
+    MULTIPLY((l, r) -> l * r),
+    DIVIDE((l, r) -> l / r),
+    ADDITION((l, r) -> l + r);
 
-    public abstract int evaluate(int left, int right);
+    private final BinaryOperator<Integer> operation;
+
+    Operation(BinaryOperator<Integer> operation) {
+      this.operation = operation;
+    }
+
+    public int evaluate(int left, int right) {
+      return this.operation.apply(left, right);
+    }
   }
 }
