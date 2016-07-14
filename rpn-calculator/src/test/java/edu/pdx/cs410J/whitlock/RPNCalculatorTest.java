@@ -2,8 +2,6 @@ package edu.pdx.cs410J.whitlock;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -16,10 +14,9 @@ public class RPNCalculatorTest
 {
 
   @Test
-  public void studentNamedPatIsNamedPat() {
-    String name = "Pat";
-    RPNCalculator pat = new RPNCalculator(name, new ArrayList(), 0.0, "Doesn't matter");
-    assertThat(pat.getName(), equalTo(name));
+  public void emptyExpressionEvalatesToZero() {
+    RPNCalculator calculator = new RPNCalculator("");
+    assertThat(calculator.evaluate(), equalTo(0));
   }
 
 }
