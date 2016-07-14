@@ -19,6 +19,7 @@
     <module>student</module>
     <module>fizzbuzz</module>
     <module>wordspinner</module>
+    <module>apptbook</module>
   </modules>
   <inceptionYear>2016</inceptionYear>
   <organization>
