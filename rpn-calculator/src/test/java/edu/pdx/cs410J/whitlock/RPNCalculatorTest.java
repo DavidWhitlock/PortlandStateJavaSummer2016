@@ -42,6 +42,12 @@ public class RPNCalculatorTest
     assertThat(stack.get(1), equalTo(2));
   }
 
+  @Test
+  public void canParseAdditionOperator() {
+    Stack stack = new RPNCalculator().parseExpression("+");
+    assertThat(stack.get(0), equalTo(RPNCalculator.Operator.ADDITION));
+  }
+
   @Ignore
   @Test
   public void oneOperandIssuesError() {

@@ -26,6 +26,11 @@ public class RPNCalculator {
 
   private Object parseToken(String token) {
     Object value;
+
+    if (token.equals("+")) {
+      return Operator.ADDITION;
+    }
+
     try {
       value = Integer.parseInt(token);
     } catch (NumberFormatException ex) {
@@ -43,4 +48,6 @@ public class RPNCalculator {
     System.err.println("Missing command line arguments");
     System.exit(1);
   }
+
+  public enum Operator {ADDITION}
 }
