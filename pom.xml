@@ -20,6 +20,7 @@
     <module>fizzbuzz</module>
     <module>wordspinner</module>
     <module>apptbook</module>
+    <module>rpn-calculator</module>
   </modules>
   <inceptionYear>2016</inceptionYear>
   <organization>
