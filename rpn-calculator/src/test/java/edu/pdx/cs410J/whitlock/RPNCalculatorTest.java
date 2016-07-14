@@ -60,6 +60,24 @@ public class RPNCalculatorTest
     assertThat(calculator.evaluate("1 2 +"), equalTo(3));
   }
 
+  @Test
+  public void canPerformSubtraction() {
+    RPNCalculator calculator = new RPNCalculator();
+    assertThat(calculator.evaluate("3 1 -"), equalTo(2));
+  }
+
+  @Test
+  public void canPerformMultiplication() {
+    RPNCalculator calculator = new RPNCalculator();
+    assertThat(calculator.evaluate("3 2 *"), equalTo(6));
+  }
+
+  @Test
+  public void canPerformDivision() {
+    RPNCalculator calculator = new RPNCalculator();
+    assertThat(calculator.evaluate("6 3 /"), equalTo(2));
+  }
+
   @Ignore
   @Test
   public void oneOperandIssuesError() {

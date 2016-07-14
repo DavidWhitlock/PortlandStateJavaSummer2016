@@ -84,10 +84,28 @@ public class RPNCalculator {
     System.exit(1);
   }
 
-  public enum Operation {SUBTRACT, MULTIPLY, DIVIDE, ADDITION;
-
+  public enum Operation {SUBTRACT {
+    @Override
+    public int evaluate(int left, int right) {
+      return left - right;
+    }
+  }, MULTIPLY {
+    @Override
+    public int evaluate(int left, int right) {
+      return left * right;
+    }
+  }, DIVIDE {
+    @Override
+    public int evaluate(int left, int right) {
+      return left / right;
+    }
+  }, ADDITION {
+    @Override
     public int evaluate(int left, int right) {
       return left + right;
     }
+  };
+
+    public abstract int evaluate(int left, int right);
   }
 }
