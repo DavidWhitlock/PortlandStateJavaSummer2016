@@ -10,7 +10,7 @@
   <version>Summer2016</version>
   <artifactId>PortlandStateJavaSummer2016</artifactId>
   <packaging>pom</packaging>
-  <name>PortlandStateJavaSummer2016</name>
+  <name>Portland State Java Summer 2016</name>
   <description>Code that we developed in CS410J/CS510J Advanced Java Programming during the Summer of 2016</description>
   <url>http://davidwhitlock.github.io/PortlandStateJavaSummer2016</url>
   <modules>
