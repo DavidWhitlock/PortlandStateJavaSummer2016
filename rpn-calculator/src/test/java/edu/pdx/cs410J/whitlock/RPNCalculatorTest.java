@@ -42,16 +42,22 @@ public class RPNCalculatorTest
   @Test
   public void canParseAdditionOperator() {
     List list = new RPNCalculator().parseExpression("+");
-    assertThat(list.get(0), equalTo(RPNCalculator.Operator.ADDITION));
+    assertThat(list.get(0), equalTo(RPNCalculator.Operation.ADDITION));
   }
 
   @Test
   public void canParseOperators() {
     List list = new RPNCalculator().parseExpression("+ - * /");
-    assertThat(list.get(0), equalTo(RPNCalculator.Operator.ADDITION));
-    assertThat(list.get(1), equalTo(RPNCalculator.Operator.SUBTRACT));
-    assertThat(list.get(2), equalTo(RPNCalculator.Operator.MULTIPLY));
-    assertThat(list.get(3), equalTo(RPNCalculator.Operator.DIVIDE));
+    assertThat(list.get(0), equalTo(RPNCalculator.Operation.ADDITION));
+    assertThat(list.get(1), equalTo(RPNCalculator.Operation.SUBTRACT));
+    assertThat(list.get(2), equalTo(RPNCalculator.Operation.MULTIPLY));
+    assertThat(list.get(3), equalTo(RPNCalculator.Operation.DIVIDE));
+  }
+
+  @Test
+  public void canPerformAddition() {
+    RPNCalculator calculator = new RPNCalculator();
+    assertThat(calculator.evaluate("1 2 +"), equalTo(3));
   }
 
   @Ignore

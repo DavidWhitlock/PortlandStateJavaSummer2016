@@ -4,6 +4,7 @@ import com.google.common.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * This class is represents a <code>Student</code>.                                 
@@ -30,16 +31,16 @@ public class RPNCalculator {
 
     switch (token) {
       case "+":
-        return Operator.ADDITION;
+        return Operation.ADDITION;
 
       case "-":
-        return Operator.SUBTRACT;
+        return Operation.SUBTRACT;
 
       case "*":
-        return Operator.MULTIPLY;
+        return Operation.MULTIPLY;
 
       case "/":
-        return Operator.DIVIDE;
+        return Operation.DIVIDE;
     }
 
     try {
@@ -51,8 +52,31 @@ public class RPNCalculator {
   }
 
   public int evaluate(String expression) {
-    parseExpression(expression);
-    return 0;
+    List lexemes = parseExpression(expression);
+    if (lexemes.isEmpty()) {
+      return 0;
+    }
+
+    Stack stack = new Stack();
+
+    for (Object lexeme : lexemes) {
+      if (lexeme instanceof Integer) {
+        stack.push(lexeme);
+
+      } else if (lexeme instanceof Operation) {
+        Operation operation = (Operation) lexeme;
+        int right = popInt(stack);
+        int left = popInt(stack);
+        int result = operation.evaluate(left, right);
+        stack.push(result);
+      }
+    }
+
+    return (Integer) stack.pop();
+  }
+
+  private int popInt(Stack stack) {
+    return (Integer) stack.pop();
   }
 
   public static void main(String[] args) {
@@ -60,5 +84,10 @@ public class RPNCalculator {
     System.exit(1);
   }
 
-  public enum Operator {SUBTRACT, MULTIPLY, DIVIDE, ADDITION}
+  public enum Operation {SUBTRACT, MULTIPLY, DIVIDE, ADDITION;
+
+    public int evaluate(int left, int right) {
+      return left + right;
+    }
+  }
 }
