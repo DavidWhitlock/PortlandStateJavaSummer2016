@@ -8,8 +8,8 @@
     <language>en-us</language>
     <copyright>&#169;2016 Portland State University</copyright>
     <item>
-      <title>File: 1,
-             Errors: 52,
+      <title>File: 2,
+             Errors: 72,
              Warnings: 0,
              Infos: 0
       </title>
@@ -29,6 +29,20 @@
           <tbody>
                           <tr>
                 <td>
+                  <a href="http://www.cs.pdx.edu/checkstyle.html#edu.pdx.cs410J.whitlock.InvalidGenderException.java">edu/pdx/cs410J/whitlock/InvalidGenderException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://www.cs.pdx.edu/checkstyle.html#edu.pdx.cs410J.whitlock.Student.java">edu/pdx/cs410J/whitlock/Student.java</a>
                 </td>
                 <td>
@@ -38,7 +52,7 @@
                   0
                 </td>
                 <td>
-                  52
+                  68
                 </td>
               </tr>
                       </tbody>
