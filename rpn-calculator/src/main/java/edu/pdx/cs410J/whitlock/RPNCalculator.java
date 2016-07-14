@@ -13,8 +13,8 @@ import java.util.function.BinaryOperator;
 public class RPNCalculator {
 
   @VisibleForTesting
-  List parseExpression(String expression) {
-    ArrayList list = new ArrayList();
+  List<Object> parseExpression(String expression) {
+    List<Object> list = new ArrayList<>();
 
     if (expression.equals("")) {
       return list;
@@ -52,13 +52,13 @@ public class RPNCalculator {
     return value;
   }
 
-  public int evaluate(String expression) {
+  int evaluate(String expression) {
     List lexemes = parseExpression(expression);
     if (lexemes.isEmpty()) {
       return 0;
     }
 
-    Stack stack = new Stack();
+    Stack<Object> stack = new Stack<>();
 
     for (Object lexeme : lexemes) {
       if (lexeme instanceof Integer) {
@@ -85,7 +85,7 @@ public class RPNCalculator {
     System.exit(1);
   }
 
-  public enum Operation {
+  enum Operation {
     SUBTRACT((l, r) -> l - r),
     MULTIPLY((l, r) -> l * r),
     DIVIDE((l, r) -> l / r),
