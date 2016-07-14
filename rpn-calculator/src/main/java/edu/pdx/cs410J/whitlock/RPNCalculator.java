@@ -1,17 +1,32 @@
 package edu.pdx.cs410J.whitlock;
 
+import java.util.Stack;
+
 /**
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
 public class RPNCalculator {
 
+  private Stack parseExpression(String expression) {
+    Stack stack = new Stack();
 
-  public RPNCalculator(String expression) {
+    if (expression.equals("")) {
+      return stack;
+    }
 
+    for (String token : expression.split(" ")) {
+      try {
+        stack.push(Integer.parseInt(token));
+      } catch (NumberFormatException ex) {
+        throw new InvalidRPNExpressionException("Invalid expression: " + token);
+      }
+    }
 
+    return stack;
   }
 
-  public int evaluate() {
+  public int evaluate(String expression) {
+    parseExpression(expression);
     return 0;
   }
 
