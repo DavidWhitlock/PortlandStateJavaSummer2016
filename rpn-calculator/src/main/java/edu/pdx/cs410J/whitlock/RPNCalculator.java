@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**                                                                                 
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
-public class Student extends Human {                                                
+public class RPNCalculator extends Human {
                                                                                     
   /**                                                                               
    * Creates a new <code>Student</code>                                             
@@ -22,7 +22,7 @@ public class Student extends Human {
    * @param gender                                                                  
    *        The rpn-calculator's gender ("male" or "female", case insensitive)             
    */                                                                               
-  public Student(String name, ArrayList classes, double gpa, String gender) {
+  public RPNCalculator(String name, ArrayList classes, double gpa, String gender) {
     super(name);
   }
 
