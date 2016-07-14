@@ -67,6 +67,12 @@ public class RPNCalculatorTest
   }
 
   @Test
+  public void canPerformMultipleOperations() {
+    RPNCalculator calculator = new RPNCalculator();
+    assertThat(calculator.evaluate("1 2 3 4 5 + + + +"), equalTo(15));
+  }
+
+  @Test
   public void canPerformMultiplication() {
     RPNCalculator calculator = new RPNCalculator();
     assertThat(calculator.evaluate("3 2 *"), equalTo(6));
