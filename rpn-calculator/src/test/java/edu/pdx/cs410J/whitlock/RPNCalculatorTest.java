@@ -3,17 +3,13 @@ package edu.pdx.cs410J.whitlock;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.Stack;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.fail;
 
-/**
- * Unit tests for the Student class.  In addition to the JUnit annotations,
- * they also make use of the <a href="http://hamcrest.org/JavaHamcrest/">hamcrest</a>
- * matchers for more readable assertion statements.
- */
 public class RPNCalculatorTest
 {
 
@@ -29,6 +25,7 @@ public class RPNCalculatorTest
     RPNCalculator calculator = new RPNCalculator();
     try {
       calculator.evaluate(invalid);
+      fail();
 
     } catch (InvalidRPNExpressionException ex) {
       assertThat(ex.getMessage(), containsString("Invalid expression: " + invalid));
@@ -37,24 +34,24 @@ public class RPNCalculatorTest
 
   @Test
   public void canParseNumbers() {
-    Stack stack = new RPNCalculator().parseExpression("1 2");
-    assertThat(stack.get(0), equalTo(1));
-    assertThat(stack.get(1), equalTo(2));
+    List list = new RPNCalculator().parseExpression("1 2");
+    assertThat(list.get(0), equalTo(1));
+    assertThat(list.get(1), equalTo(2));
   }
 
   @Test
   public void canParseAdditionOperator() {
-    Stack stack = new RPNCalculator().parseExpression("+");
-    assertThat(stack.get(0), equalTo(RPNCalculator.Operator.ADDITION));
+    List list = new RPNCalculator().parseExpression("+");
+    assertThat(list.get(0), equalTo(RPNCalculator.Operator.ADDITION));
   }
 
   @Test
   public void canParseOperators() {
-    Stack stack = new RPNCalculator().parseExpression("+ - * /");
-    assertThat(stack.get(0), equalTo(RPNCalculator.Operator.ADDITION));
-    assertThat(stack.get(1), equalTo(RPNCalculator.Operator.SUBTRACT));
-    assertThat(stack.get(2), equalTo(RPNCalculator.Operator.MULTIPLY));
-    assertThat(stack.get(3), equalTo(RPNCalculator.Operator.DIVIDE));
+    List list = new RPNCalculator().parseExpression("+ - * /");
+    assertThat(list.get(0), equalTo(RPNCalculator.Operator.ADDITION));
+    assertThat(list.get(1), equalTo(RPNCalculator.Operator.SUBTRACT));
+    assertThat(list.get(2), equalTo(RPNCalculator.Operator.MULTIPLY));
+    assertThat(list.get(3), equalTo(RPNCalculator.Operator.DIVIDE));
   }
 
   @Ignore
@@ -63,6 +60,7 @@ public class RPNCalculatorTest
     RPNCalculator calculator = new RPNCalculator();
     try {
       calculator.evaluate("1");
+      fail();
 
     } catch (InvalidRPNExpressionException ex) {
       assertThat(ex.getMessage(), containsString("Missing operator"));

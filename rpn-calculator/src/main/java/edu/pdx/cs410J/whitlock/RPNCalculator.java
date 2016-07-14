@@ -2,7 +2,8 @@ package edu.pdx.cs410J.whitlock;
 
 import com.google.common.annotations.VisibleForTesting;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is represents a <code>Student</code>.                                 
@@ -10,18 +11,18 @@ import java.util.Stack;
 public class RPNCalculator {
 
   @VisibleForTesting
-  Stack parseExpression(String expression) {
-    Stack stack = new Stack();
+  List parseExpression(String expression) {
+    ArrayList list = new ArrayList();
 
     if (expression.equals("")) {
-      return stack;
+      return list;
     }
 
     for (String token : expression.split(" ")) {
-      stack.push(parseToken(token));
+      list.add(parseToken(token));
     }
 
-    return stack;
+    return list;
   }
 
   private Object parseToken(String token) {
