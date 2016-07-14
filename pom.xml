@@ -14,7 +14,7 @@
   <description>Code that we developed in CS410J/CS510J Advanced Java Programming during the Summer of 2016</description>
   <url>http://davidwhitlock.github.io/PortlandStateJavaSummer2016</url>
   <modules>
-    <module>apptbook</module>
+    <module>apptbook-cmdline</module>
     <module>koans</module>
     <module>student</module>
     <module>fizzbuzz</module>

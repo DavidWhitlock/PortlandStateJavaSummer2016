@@ -7,7 +7,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.pdx.cs410J.whitlock</groupId>
-  <artifactId>apptbook</artifactId>
+  <artifactId>apptbook-cmdline</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>CS410J Appointment Book Project</name>
