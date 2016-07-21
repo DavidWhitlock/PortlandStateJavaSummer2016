@@ -69,7 +69,15 @@ public class GameOfLife {
       numberLiveNeighbors++;
     }
 
+    if (northeastNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
     return numberLiveNeighbors;
+  }
+
+  private boolean northeastNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row - 1, column + 1);
   }
 
   private boolean northwestNeighborIsAlive(int row, int column) {

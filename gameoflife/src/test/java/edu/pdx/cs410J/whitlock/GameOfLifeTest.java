@@ -46,6 +46,22 @@ public class GameOfLifeTest
     assertThat(game.getNumberOfLiveNeighbors(1, 1), equalTo(1));
   }
 
+  @Test
+  public void noLiveNeighborsAtTopRight() {
+    GameOfLife game = new GameOfLife(2, 2);
+    game.addRow("..");
+    game.addRow("..");
+    assertThat(game.getNumberOfLiveNeighbors(0, 1), equalTo(0));
+  }
+
+  @Test
+  public void oneLiveNeighborToTheNortheast() {
+    GameOfLife game = new GameOfLife(2, 2);
+    game.addRow(".*");
+    game.addRow("..");
+    assertThat(game.getNumberOfLiveNeighbors(1, 0), equalTo(1));
+  }
+
   @Ignore
   @Test
   public void liveCellWithTwoNeighborsLives() {
