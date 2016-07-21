@@ -65,71 +65,17 @@ public class GameOfLife {
   int getNumberOfLiveNeighbors(int row, int column) {
     int numberLiveNeighbors = 0;
 
-    if (northwestNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (northeastNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (southeastNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (southwestNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (northNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (eastNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (southNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
-    }
-
-    if (westNeighborIsAlive(row, column)) {
-      numberLiveNeighbors++;
+    for (int i = row - 1; i <= row + 1; i++) {
+      for (int j = column - 1; j <= column + 1; j++) {
+        if (!(i == row && j == column)) {
+          if (cellIsAlive(i, j)) {
+            numberLiveNeighbors++;
+          }
+        }
+      }
     }
 
     return numberLiveNeighbors;
-  }
-
-  private boolean westNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row, column - 1);
-  }
-
-  private boolean southNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row + 1, column);
-  }
-
-  private boolean eastNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row, column + 1);
-  }
-
-  private boolean northNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row - 1, column);
-  }
-
-  private boolean southwestNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row + 1, column - 1);
-  }
-
-  private boolean southeastNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row + 1, column + 1);
-  }
-
-  private boolean northeastNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row - 1, column + 1);
-  }
-
-  private boolean northwestNeighborIsAlive(int row, int column) {
-    return cellIsAlive(row - 1, column - 1);
   }
 
   private boolean cellIsAlive(int row, int column) {
