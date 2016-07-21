@@ -56,7 +56,8 @@ public class AppointmentBookServlet extends HttpServlet
         pretty.dump(book);
     }
 
-    private AppointmentBook getAppointmentBookForOwner(String owner) {
+    @VisibleForTesting
+    AppointmentBook getAppointmentBookForOwner(String owner) {
         return this.appointmentBooks.get(owner);
     }
 
@@ -70,6 +71,18 @@ public class AppointmentBookServlet extends HttpServlet
     {
         response.setContentType( "text/plain" );
 
+        String owner = getParameter("owner", request);
+
+        AppointmentBook book = getAppointmentBookForOwner(owner);
+
+        String description = getParameter("description", request);
+        String beginTime = getParameter("beginTime", request);
+        String endTime = getParameter("endTime", request);
+
+        Appointment appointment = new Appointment(description, beginTime, endTime);
+        book.addAppointment(appointment);
+
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     /**
