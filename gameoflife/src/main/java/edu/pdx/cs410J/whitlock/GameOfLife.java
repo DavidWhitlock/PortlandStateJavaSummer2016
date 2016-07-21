@@ -81,7 +81,39 @@ public class GameOfLife {
       numberLiveNeighbors++;
     }
 
+    if (northNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
+    if (eastNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
+    if (southNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
+    if (westNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
     return numberLiveNeighbors;
+  }
+
+  private boolean westNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row, column - 1);
+  }
+
+  private boolean southNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row + 1, column);
+  }
+
+  private boolean eastNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row, column + 1);
+  }
+
+  private boolean northNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row - 1, column);
   }
 
   private boolean southwestNeighborIsAlive(int row, int column) {
