@@ -18,7 +18,18 @@ import java.util.Map;
  */
 public class AppointmentBookServlet extends HttpServlet
 {
-    private final Map<String, String> data = new HashMap<>();
+    private final Map<String, AppointmentBook> appointmentBooks = new HashMap<>();
+
+    public AppointmentBookServlet() {
+        createPreCannedAppointmentBook();
+    }
+
+    private void createPreCannedAppointmentBook() {
+        String owner = "PreCannedOwner";
+        AppointmentBook book = new AppointmentBook(owner);
+        this.appointmentBooks.put(owner, book);
+
+    }
 
     /**
      * Handles an HTTP GET request from a client by writing the value of the key
@@ -31,13 +42,22 @@ public class AppointmentBookServlet extends HttpServlet
     {
         response.setContentType( "text/plain" );
 
-        String key = getParameter( "key", request );
-        if (key != null) {
-            writeValue(key, response);
+        String owner = getParameter( "owner", request );
 
-        } else {
-            writeAllMappings(response);
-        }
+        AppointmentBook book = getAppointmentBookForOwner(owner);
+
+        prettyPrint(book, response.getWriter());
+
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    private void prettyPrint(AppointmentBook book, PrintWriter pw) throws IOException {
+        PrettyPrinter pretty = new PrettyPrinter(pw);
+        pretty.dump(book);
+    }
+
+    private AppointmentBook getAppointmentBookForOwner(String owner) {
+        return this.appointmentBooks.get(owner);
     }
 
     /**
@@ -50,25 +70,6 @@ public class AppointmentBookServlet extends HttpServlet
     {
         response.setContentType( "text/plain" );
 
-        String key = getParameter( "key", request );
-        if (key == null) {
-            missingRequiredParameter(response, "key");
-            return;
-        }
-
-        String value = getParameter( "value", request );
-        if ( value == null) {
-            missingRequiredParameter( response, "value" );
-            return;
-        }
-
-        this.data.put(key, value);
-
-        PrintWriter pw = response.getWriter();
-        pw.println(Messages.mappedKeyValue(key, value));
-        pw.flush();
-
-        response.setStatus( HttpServletResponse.SC_OK);
     }
 
     /**
@@ -80,7 +81,7 @@ public class AppointmentBookServlet extends HttpServlet
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/plain");
 
-        this.data.clear();
+        this.appointmentBooks.clear();
 
         PrintWriter pw = response.getWriter();
         pw.println(Messages.allMappingsDeleted());
@@ -103,45 +104,6 @@ public class AppointmentBookServlet extends HttpServlet
     }
 
     /**
-     * Writes the value of the given key to the HTTP response.
-     *
-     * The text of the message is formatted with {@link Messages#getMappingCount(int)}
-     * and {@link Messages#formatKeyValuePair(String, String)}
-     */
-    private void writeValue( String key, HttpServletResponse response ) throws IOException
-    {
-        String value = this.data.get(key);
-
-        PrintWriter pw = response.getWriter();
-        pw.println(Messages.getMappingCount( value != null ? 1 : 0 ));
-        pw.println(Messages.formatKeyValuePair(key, value));
-
-        pw.flush();
-
-        response.setStatus( HttpServletResponse.SC_OK );
-    }
-
-    /**
-     * Writes all of the key/value pairs to the HTTP response.
-     *
-     * The text of the message is formatted with
-     * {@link Messages#formatKeyValuePair(String, String)}
-     */
-    private void writeAllMappings( HttpServletResponse response ) throws IOException
-    {
-        PrintWriter pw = response.getWriter();
-        pw.println(Messages.getMappingCount(data.size()));
-
-        for (Map.Entry<String, String> entry : this.data.entrySet()) {
-            pw.println(Messages.formatKeyValuePair(entry.getKey(), entry.getValue()));
-        }
-
-        pw.flush();
-
-        response.setStatus( HttpServletResponse.SC_OK );
-    }
-
-    /**
      * Returns the value of the HTTP request parameter with the given name.
      *
      * @return <code>null</code> if the value of the parameter is
@@ -158,12 +120,7 @@ public class AppointmentBookServlet extends HttpServlet
     }
 
     @VisibleForTesting
-    void setValueForKey(String key, String value) {
-        this.data.put(key, value);
-    }
-
-    @VisibleForTesting
     String getValueForKey(String key) {
-        return this.data.get(key);
+        throw new UnsupportedOperationException("I don't work anymore!");
     }
 }
