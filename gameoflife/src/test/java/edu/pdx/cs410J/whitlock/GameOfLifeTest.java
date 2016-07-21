@@ -21,4 +21,12 @@ public class GameOfLifeTest
     assertThat(game.getRow(0), equalTo("."));
   }
 
+  @Test
+  public void oneLiveCellDies() {
+    GameOfLife game = new GameOfLife(1, 1);
+    game.addRow("*");
+    game.computeNextGeneration();
+    assertThat(game.getRow(0), equalTo("."));
+  }
+
 }

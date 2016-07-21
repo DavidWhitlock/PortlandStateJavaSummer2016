@@ -5,12 +5,18 @@ package edu.pdx.cs410J.whitlock;
  */                                                                                 
 public class GameOfLife {
 
+  private static final char DEAD_CELL = '.';
+
   private final char[][] grid;
   private int nextUnpopulatedRow;
+  private final int rowCount;
+  private final int columnCount;
 
   public GameOfLife(int rowCount, int columnCount) {
     this.grid = new char[rowCount][columnCount];
     this.nextUnpopulatedRow = 0;
+    this.rowCount = rowCount;
+    this.columnCount = columnCount;
   }
 
   /**
@@ -23,17 +29,26 @@ public class GameOfLife {
     System.exit(1);
   }
 
-  public void addRow(String row) {
+  void addRow(String row) {
     this.grid[this.nextUnpopulatedRow] = row.toCharArray();
     this.nextUnpopulatedRow++;
   }
 
-  public void computeNextGeneration() {
-
+  void computeNextGeneration() {
+    for (int row = 0; row < this.rowCount; row++) {
+      for (int column = 0; column < this.columnCount; column++) {
+        char cell = this.grid[row][column];
+        this.grid[row][column] = getNextGenerationCell(cell);
+      }
+    }
 
   }
 
-  public String getRow(int rowIndex) {
+  private char getNextGenerationCell(char cell) {
+    return DEAD_CELL;
+  }
+
+  String getRow(int rowIndex) {
     return new String(this.grid[rowIndex]);
   }
 }
