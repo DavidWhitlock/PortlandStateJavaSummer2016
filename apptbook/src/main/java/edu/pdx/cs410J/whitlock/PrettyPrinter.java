@@ -14,7 +14,15 @@ public class PrettyPrinter implements AppointmentBookDumper {
   }
 
   @Override
-  public void dump(AbstractAppointmentBook book) throws IOException {
-    this.writer.println(book.getOwnerName());
+  public void dump(AbstractAppointmentBook abstractAppointmentBook) throws IOException {
+    this.writer.println(abstractAppointmentBook.getOwnerName());
+
+    AppointmentBook appointmentBook = (AppointmentBook) abstractAppointmentBook;
+    for (Appointment appointment : appointmentBook.getAppointments()) {
+      this.writer.println(appointment.getDescription());
+      this.writer.println(appointment.getBeginTimeString());
+      this.writer.println(appointment.getEndTimeString());
+
+    }
   }
 }
