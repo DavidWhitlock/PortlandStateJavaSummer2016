@@ -73,7 +73,23 @@ public class GameOfLife {
       numberLiveNeighbors++;
     }
 
+    if (southeastNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
+    if (southwestNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
     return numberLiveNeighbors;
+  }
+
+  private boolean southwestNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row + 1, column - 1);
+  }
+
+  private boolean southeastNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row + 1, column + 1);
   }
 
   private boolean northeastNeighborIsAlive(int row, int column) {
@@ -89,6 +105,12 @@ public class GameOfLife {
       return false;
 
     } else if (column < 0) {
+      return false;
+
+    } else if (column >= this.columnCount) {
+      return false;
+
+    } else if (row >= this.rowCount) {
       return false;
 
     } else {
