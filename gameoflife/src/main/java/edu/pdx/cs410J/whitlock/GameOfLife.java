@@ -1,11 +1,14 @@
 package edu.pdx.cs410J.whitlock;
 
+import com.google.common.annotations.VisibleForTesting;
+
 /**
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
 public class GameOfLife {
 
   private static final char DEAD_CELL = '.';
+  private static final char ALIVE_CELL = '*';
 
   private final char[][] grid;
   private int nextUnpopulatedRow;
@@ -37,15 +40,56 @@ public class GameOfLife {
   void computeNextGeneration() {
     for (int row = 0; row < this.rowCount; row++) {
       for (int column = 0; column < this.columnCount; column++) {
-        char cell = this.grid[row][column];
-        this.grid[row][column] = getNextGenerationCell(cell);
+        this.grid[row][column] = getNextGenerationCell(row, column);
       }
     }
 
   }
 
-  private char getNextGenerationCell(char cell) {
+  private char getNextGenerationCell(int row, int column) {
+    char cell = getCell(row, column);
+    int numberOfLiveNeighbors = getNumberOfLiveNeighbors(row, column);
+    if (cell == ALIVE_CELL) {
+      if (numberOfLiveNeighbors < 2) {
+        return DEAD_CELL;
+
+      } else if (numberOfLiveNeighbors > 3) {
+        return DEAD_CELL;
+      }
+
+    }
     return DEAD_CELL;
+  }
+
+  @VisibleForTesting
+  int getNumberOfLiveNeighbors(int row, int column) {
+    int numberLiveNeighbors = 0;
+
+    if (northeastNeighborIsAlive(row, column)) {
+      numberLiveNeighbors++;
+    }
+
+    return numberLiveNeighbors;
+  }
+
+  private boolean northeastNeighborIsAlive(int row, int column) {
+    return cellIsAlive(row - 1, column - 1);
+  }
+
+  private boolean cellIsAlive(int row, int column) {
+    if (row < 0) {
+      return false;
+
+    } else if (column < 0) {
+      return false;
+
+    } else {
+      return getCell(row, column) == ALIVE_CELL;
+    }
+  }
+
+  private char getCell(int row, int column) {
+    return this.grid[row][column];
   }
 
   String getRow(int rowIndex) {
