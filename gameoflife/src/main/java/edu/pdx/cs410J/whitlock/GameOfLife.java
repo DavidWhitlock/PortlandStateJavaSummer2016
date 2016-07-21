@@ -65,14 +65,14 @@ public class GameOfLife {
   int getNumberOfLiveNeighbors(int row, int column) {
     int numberLiveNeighbors = 0;
 
-    if (northeastNeighborIsAlive(row, column)) {
+    if (northwestNeighborIsAlive(row, column)) {
       numberLiveNeighbors++;
     }
 
     return numberLiveNeighbors;
   }
 
-  private boolean northeastNeighborIsAlive(int row, int column) {
+  private boolean northwestNeighborIsAlive(int row, int column) {
     return cellIsAlive(row - 1, column - 1);
   }
 

@@ -39,7 +39,7 @@ public class GameOfLifeTest
   }
 
   @Test
-  public void oneLiveNeighborToTheNortheast() {
+  public void oneLiveNeighborToTheNorthwest() {
     GameOfLife game = new GameOfLife(2, 2);
     game.addRow("*.");
     game.addRow("..");
