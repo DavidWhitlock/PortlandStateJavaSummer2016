@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>CS410J</artifactId>
+    <artifactId>PortlandStateJavaSummer2016</artifactId>
     <groupId>edu.pdx.cs410J</groupId>
     <version>Summer2016</version>
   </parent>
@@ -11,8 +11,8 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Student Project</name>
-  <description>A simple Student program to get you started with Java</description>
+  <name>Game of Life Code Kata</name>
+  <description>A TDD implementation of Conway's Game of Life</description>
   <url>http://www.cs.pdx.edu</url>
 
   <properties>
