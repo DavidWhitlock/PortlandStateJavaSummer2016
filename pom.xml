@@ -21,6 +21,7 @@
     <module>wordspinner</module>
     <module>apptbook</module>
     <module>rpn-calculator</module>
+    <module>apptbook-gwt</module>
   </modules>
   <inceptionYear>2016</inceptionYear>
   <organization>
