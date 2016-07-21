@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -26,38 +25,13 @@ public class AppointmentBookRestClientIT {
   }
 
   @Test
-  public void test0RemoveAllMappings() throws IOException {
+  public void invokingGETWithJustOwnerParameterPrettyPrintsOwnerName() throws IOException {
     AppointmentBookRestClient client = newAppointmentBookRestClient();
-    Response response = client.removeAllMappings();
+    String owner = "PreCannedOwner";
+    Response response = client.prettyPrintAppointmentBook(owner);
     assertThat(response.getContent(), response.getCode(), equalTo(200));
+    assertThat(response.getContent(), containsString(owner));
   }
 
-  @Test
-  public void test1EmptyServerContainsNoMappings() throws IOException {
-    AppointmentBookRestClient client = newAppointmentBookRestClient();
-    Response response = client.getAllKeysAndValues();
-    String content = response.getContent();
-    assertThat(content, response.getCode(), equalTo(200));
-    assertThat(content, containsString(Messages.getMappingCount(0)));
-  }
-
-  @Test
-  public void test2AddOneKeyValuePair() throws IOException {
-    AppointmentBookRestClient client = newAppointmentBookRestClient();
-    String testKey = "TEST KEY";
-    String testValue = "TEST VALUE";
-    Response response = client.addKeyValuePair(testKey, testValue);
-    String content = response.getContent();
-    assertThat(content, response.getCode(), equalTo(200));
-    assertThat(content, containsString(Messages.mappedKeyValue(testKey, testValue)));
-  }
-
-  @Test
-  public void missingRequiredParameterReturnsPreconditionFailed() throws IOException {
-    AppointmentBookRestClient client = newAppointmentBookRestClient();
-    Response response = client.postToMyURL();
-    assertThat(response.getContent(), containsString(Messages.missingRequiredParameter("key")));
-    assertThat(response.getCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
-  }
 
 }
