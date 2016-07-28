@@ -1,6 +1,5 @@
 package edu.pdx.cs410J.whitlock;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -126,7 +125,6 @@ public class GameOfLifeTest
     assertThat(game.getNumberOfLiveNeighbors(1, 1), equalTo(1));
   }
 
-  @Ignore
   @Test
   public void liveCellWithTwoNeighborsLives() {
     GameOfLife game = new GameOfLife(2, 2);

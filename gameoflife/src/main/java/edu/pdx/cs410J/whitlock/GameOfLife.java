@@ -55,6 +55,9 @@ public class GameOfLife {
 
       } else if (numberOfLiveNeighbors > 3) {
         return DEAD_CELL;
+
+      } else if (numberOfLiveNeighbors == 2 || numberOfLiveNeighbors == 3){
+        return ALIVE_CELL;
       }
 
     }
