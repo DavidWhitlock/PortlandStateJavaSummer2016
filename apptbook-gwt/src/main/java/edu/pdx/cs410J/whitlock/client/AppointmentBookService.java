@@ -6,7 +6,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 /**
  * A GWT remote service that returns a dummy appointment book
  */
-@RemoteServiceRelativePath("ping")
+@RemoteServiceRelativePath("appointments")
 public interface AppointmentBookService extends RemoteService {
 
   /**
