@@ -2,7 +2,7 @@ package edu.pdx.cs410J.whitlock;
 
 import com.gdevelop.gwt.syncrpc.SyncProxy;
 import edu.pdx.cs410J.whitlock.client.AppointmentBook;
-import edu.pdx.cs410J.whitlock.client.PingService;
+import edu.pdx.cs410J.whitlock.client.AppointmentBookService;
 import edu.pdx.cs410J.web.HttpRequestHelper;
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class PingServiceSyncProxyIT extends HttpRequestHelper {
     String moduleName = "apptbook";
     SyncProxy.setBaseURL(this.webAppUrl + "/" + moduleName + "/");
 
-    PingService ping = SyncProxy.createSync(PingService.class);
+    AppointmentBookService ping = SyncProxy.createSync(AppointmentBookService.class);
     int numberOfAppointments = 5;
     AppointmentBook apptbook = ping.createAppointmentBook(numberOfAppointments);
     assertEquals("My Owner", apptbook.getOwnerName());

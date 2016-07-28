@@ -52,7 +52,7 @@ public class AppointmentBookGwt implements EntryPoint {
   }
 
   private void createAppointments() {
-    PingServiceAsync async = GWT.create(PingService.class);
+    AppointmentBookServiceAsync async = GWT.create(AppointmentBookService.class);
     int numberOfAppointments = getNumberOfAppointments();
     async.createAppointmentBook(numberOfAppointments, new AsyncCallback<AppointmentBook>() {
 
