@@ -153,4 +153,16 @@ public class GameOfLifeTest
     assertThat(game.getRow(1).charAt(1), equalTo('.'));
   }
 
+  @Test
+  public void testThatNextGenerationIsOnlyBasedOnPreviousGeneration() {
+    GameOfLife game = new GameOfLife(2, 3);
+    game.addRow("*.*");
+    game.addRow("..*");
+    assertThat(game.getCell(1, 1), equalTo(GameOfLife.DEAD_CELL));
+    assertThat(game.getNumberOfLiveNeighbors(1, 1), equalTo(3));
+    game.computeNextGeneration();
+    assertThat(game.getRow(1).charAt(1), equalTo('*'));
+
+  }
+
 }

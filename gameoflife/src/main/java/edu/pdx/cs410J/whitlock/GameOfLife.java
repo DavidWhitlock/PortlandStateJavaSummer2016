@@ -7,10 +7,10 @@ import com.google.common.annotations.VisibleForTesting;
  */                                                                                 
 public class GameOfLife {
 
-  private static final char DEAD_CELL = '.';
+  static final char DEAD_CELL = '.';
   private static final char ALIVE_CELL = '*';
 
-  private final char[][] grid;
+  private char[][] grid;
   private int nextUnpopulatedRow;
   private final int rowCount;
   private final int columnCount;
@@ -38,12 +38,17 @@ public class GameOfLife {
   }
 
   void computeNextGeneration() {
+    char[][] newGrid = new char[this.rowCount][this.columnCount];
+
     for (int row = 0; row < this.rowCount; row++) {
+      newGrid[row] = new char[this.columnCount];
+
       for (int column = 0; column < this.columnCount; column++) {
-        this.grid[row][column] = getNextGenerationCell(row, column);
+        newGrid[row][column] = getNextGenerationCell(row, column);
       }
     }
 
+    this.grid = newGrid;
   }
 
   private char getNextGenerationCell(int row, int column) {
@@ -105,7 +110,8 @@ public class GameOfLife {
     }
   }
 
-  private char getCell(int row, int column) {
+  @VisibleForTesting
+  char getCell(int row, int column) {
     return this.grid[row][column];
   }
 
