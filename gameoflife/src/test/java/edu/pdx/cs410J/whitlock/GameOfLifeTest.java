@@ -135,4 +135,22 @@ public class GameOfLifeTest
     assertThat(game.getRow(1).charAt(0), equalTo('*'));
   }
 
+  @Test
+  public void deadCellWithThreeLiveNeighborsBecomesAlive() {
+    GameOfLife game = new GameOfLife(2, 2);
+    game.addRow("**");
+    game.addRow("*.");
+    game.computeNextGeneration();
+    assertThat(game.getRow(1).charAt(1), equalTo('*'));
+  }
+
+  @Test
+  public void deadCellWithFourLiveNeighborsStaysDead() {
+    GameOfLife game = new GameOfLife(2, 3);
+    game.addRow("**.");
+    game.addRow("*.*");
+    game.computeNextGeneration();
+    assertThat(game.getRow(1).charAt(1), equalTo('.'));
+  }
+
 }

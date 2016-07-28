@@ -60,6 +60,12 @@ public class GameOfLife {
         return ALIVE_CELL;
       }
 
+    } else {
+      assert cell == DEAD_CELL;
+
+      if (numberOfLiveNeighbors == 3) {
+        return ALIVE_CELL;
+      }
     }
     return DEAD_CELL;
   }
