@@ -154,7 +154,7 @@ public class GameOfLifeTest
   }
 
   @Test
-  public void testThatNextGenerationIsOnlyBasedOnPreviousGeneration() {
+  public void nextGenerationIsOnlyBasedOnPreviousGeneration() {
     GameOfLife game = new GameOfLife(2, 3);
     game.addRow("*.*");
     game.addRow("..*");
@@ -162,7 +162,22 @@ public class GameOfLifeTest
     assertThat(game.getNumberOfLiveNeighbors(1, 1), equalTo(3));
     game.computeNextGeneration();
     assertThat(game.getRow(1).charAt(1), equalTo('*'));
+  }
 
+  @Test
+  public void multipleGenerationsAndEveryoneDies() {
+    GameOfLife game = new GameOfLife(2, 3);
+    game.addRow("*.*");
+    game.addRow("..*");
+    game.computeNextGeneration();
+
+    assertThat(game.getRow(0), equalTo(".*."));
+    assertThat(game.getRow(1), equalTo(".*."));
+
+    game.computeNextGeneration();
+
+    assertThat(game.getRow(0), equalTo("..."));
+    assertThat(game.getRow(1), equalTo("..."));
   }
 
 }
