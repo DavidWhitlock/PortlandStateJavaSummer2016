@@ -2,6 +2,8 @@ package edu.pdx.cs410J.whitlock;
 
 import com.google.common.annotations.VisibleForTesting;
 
+import java.io.*;
+
 /**
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
@@ -27,9 +29,47 @@ public class GameOfLife {
    * <code>Student</code>, and prints a description of the gameoflife to
    * standard out by invoking its <code>toString</code> method.
    */
-  public static void main(String[] args) {
-    System.err.println("Missing command line arguments");
-    System.exit(1);
+  public static void main(String[] args) throws InterruptedException, IOException {
+    if (args.length == 0) {
+      System.err.println("** Missing file name");
+      System.exit(1);
+    }
+
+    String fileName = args[0];
+    GameOfLife game = readGameFromFile(new File(fileName));
+
+    while (gameHasLiveCells(game)) {
+      printGame(game);
+      game.computeNextGeneration();
+      Thread.sleep(1000);
+    }
+  }
+
+  @VisibleForTesting
+  static boolean gameHasLiveCells(GameOfLife game) {
+    for (int row = 0; row < game.getRowCount(); row++) {
+      if (rowContainAliveCell(game, row) != -1) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private static int rowContainAliveCell(GameOfLife game, int row) {
+    return game.getRow(row).indexOf(GameOfLife.ALIVE_CELL);
+  }
+
+  private static void printGame(GameOfLife game) {
+    for (int row = 0; row < game.getRowCount(); row++) {
+      System.out.println(game.getRow(row));
+    }
+
+    System.out.println();
+  }
+
+  private static GameOfLife readGameFromFile(File file) throws IOException {
+    return parseTextFormat(new FileReader(file));
   }
 
   void addRow(String row) {
@@ -117,5 +157,25 @@ public class GameOfLife {
 
   String getRow(int rowIndex) {
     return new String(this.grid[rowIndex]);
+  }
+
+  @VisibleForTesting
+  int getRowCount() {
+    return rowCount;
+  }
+
+  @VisibleForTesting
+  static GameOfLife parseTextFormat(Reader reader) throws IOException {
+    BufferedReader br = new BufferedReader(reader);
+
+    int rowCount = Integer.parseInt(br.readLine());
+    int columnCount = Integer.parseInt(br.readLine());
+
+    GameOfLife game = new GameOfLife(rowCount, columnCount);
+    for (int row = 0; row < rowCount; row++) {
+      game.addRow(br.readLine());
+    }
+
+    return game;
   }
 }

@@ -2,6 +2,9 @@ package edu.pdx.cs410J.whitlock;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.StringReader;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -178,6 +181,40 @@ public class GameOfLifeTest
 
     assertThat(game.getRow(0), equalTo("..."));
     assertThat(game.getRow(1), equalTo("..."));
+  }
+
+  @Test
+  public void canParseGameOfLifeTextFormat() throws IOException {
+    StringBuilder sb = new StringBuilder();
+    sb.append("2\n");
+    sb.append("3\n");
+    String row0 = "*.*";
+    sb.append(row0).append("\n");
+    String row1 = ".*.";
+    sb.append(row1).append("\n");
+
+    GameOfLife game = GameOfLife.parseTextFormat(new StringReader(sb.toString()));
+
+    assertThat(game.getRow(0), equalTo(row0));
+    assertThat(game.getRow(1), equalTo(row1));
+  }
+
+  @Test
+  public void oneLiveCellMeansGameIsAlive() {
+    GameOfLife game = new GameOfLife(2, 3);
+    game.addRow("*..");
+    game.addRow("...");
+
+    assertThat(GameOfLife.gameHasLiveCells(game), equalTo(true));
+  }
+
+  @Test
+  public void noLiveCellsMeansGameIsAlive() {
+    GameOfLife game = new GameOfLife(2, 3);
+    game.addRow("...");
+    game.addRow("...");
+
+    assertThat(GameOfLife.gameHasLiveCells(game), equalTo(false));
   }
 
 }
