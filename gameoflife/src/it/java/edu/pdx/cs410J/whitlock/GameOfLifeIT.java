@@ -22,7 +22,7 @@ public class GameOfLifeIT extends InvokeMainTestCase {
   @Test
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
     InvokeMainTestCase.MainMethodResult result = invokeMain(GameOfLife.class);
-    assertThat(result.getErr(), containsString("Missing command line arguments"));
+    assertThat(result.getErr(), containsString("Missing file name"));
   }
 
 
