@@ -10,5 +10,5 @@ public interface PingServiceAsync {
   /**
    * Return the current date/time on the server
    */
-  void ping(AsyncCallback<AppointmentBook> async);
+  void createAppointmentBook(int numberOfAppointments, AsyncCallback<AppointmentBook> async);
 }

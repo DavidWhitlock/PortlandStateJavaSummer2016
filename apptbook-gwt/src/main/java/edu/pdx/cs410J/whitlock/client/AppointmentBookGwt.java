@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 import java.util.Collection;
 
@@ -20,6 +21,7 @@ public class AppointmentBookGwt implements EntryPoint {
 
   @VisibleForTesting
   Button button;
+  TextBox textBox;
 
   public AppointmentBookGwt() {
     this(new Alerter() {
@@ -42,14 +44,17 @@ public class AppointmentBookGwt implements EntryPoint {
     button.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
-        pingServer();
+        createAppointments();
       }
     });
+
+    this.textBox = new TextBox();
   }
 
-  private void pingServer() {
+  private void createAppointments() {
     PingServiceAsync async = GWT.create(PingService.class);
-    async.ping(new AsyncCallback<AppointmentBook>() {
+    int numberOfAppointments = getNumberOfAppointments();
+    async.createAppointmentBook(numberOfAppointments, new AsyncCallback<AppointmentBook>() {
 
       @Override
       public void onSuccess(AppointmentBook airline) {
@@ -61,6 +66,12 @@ public class AppointmentBookGwt implements EntryPoint {
         alert(ex);
       }
     });
+  }
+
+  private int getNumberOfAppointments() {
+    String number = this.textBox.getText();
+
+    return Integer.parseInt(number);
   }
 
   private void displayInAlertDialog(AppointmentBook airline) {
@@ -83,6 +94,7 @@ public class AppointmentBookGwt implements EntryPoint {
   public void onModuleLoad() {
     RootPanel rootPanel = RootPanel.get();
     rootPanel.add(button);
+    rootPanel.add(textBox);
   }
 
   @VisibleForTesting

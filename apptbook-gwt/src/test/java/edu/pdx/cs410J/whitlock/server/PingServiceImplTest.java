@@ -11,7 +11,8 @@ public class PingServiceImplTest {
   @Test
   public void pingReturnsExpectedAirline() {
     PingServiceImpl service = new PingServiceImpl();
-    AppointmentBook airline = service.ping();
-    assertThat(airline.getAppointments().size(), equalTo(1));
+    int numberOfAppointments = 6;
+    AppointmentBook airline = service.createAppointmentBook(numberOfAppointments);
+    assertThat(airline.getAppointments().size(), equalTo(numberOfAppointments));
   }
 }

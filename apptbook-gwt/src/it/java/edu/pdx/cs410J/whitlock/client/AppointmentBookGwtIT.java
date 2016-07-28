@@ -24,6 +24,7 @@ public class AppointmentBookGwtIT extends GWTTestCase {
     final CapturingAlerter alerter = new CapturingAlerter();
 
     AppointmentBookGwt ui = new AppointmentBookGwt(alerter);
+    ui.textBox.setText("4");
     click(ui.button);
 
     Timer verify = new Timer() {
@@ -31,7 +32,7 @@ public class AppointmentBookGwtIT extends GWTTestCase {
       public void run() {
         String message = alerter.getMessage();
         assertNotNull(message);
-        assertTrue(message, message.contains("My Owner's appointment book with 1 appointments"));
+        assertTrue(message, message.contains("My Owner's appointment book with 4 appointments"));
         finishTest();
       }
     };
