@@ -9,7 +9,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
-import edu.pdx.cs410J.AbstractAppointment;
 
 import java.util.Collection;
 
@@ -43,27 +42,41 @@ public class AppointmentBookGwt implements EntryPoint {
     button.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
-        PingServiceAsync async = GWT.create(PingService.class);
-        async.ping(new AsyncCallback<AppointmentBook>() {
-
-          @Override
-          public void onFailure(Throwable ex) {
-            alerter.alert(ex.toString());
-          }
-
-          @Override
-          public void onSuccess(AppointmentBook airline) {
-            StringBuilder sb = new StringBuilder(airline.toString());
-            Collection<Appointment> flights = airline.getAppointments();
-            for (Appointment flight : flights) {
-              sb.append(flight);
-              sb.append("\n");
-            }
-            alerter.alert(sb.toString());
-          }
-        });
+        pingServer();
       }
     });
+  }
+
+  private void pingServer() {
+    PingServiceAsync async = GWT.create(PingService.class);
+    async.ping(new AsyncCallback<AppointmentBook>() {
+
+      @Override
+      public void onSuccess(AppointmentBook airline) {
+        displayInAlertDialog(airline);
+      }
+
+      @Override
+      public void onFailure(Throwable ex) {
+        alert(ex);
+      }
+    });
+  }
+
+  private void displayInAlertDialog(AppointmentBook airline) {
+    StringBuilder sb = new StringBuilder(airline.toString());
+    sb.append("\n");
+
+    Collection<Appointment> flights = airline.getAppointments();
+    for (Appointment flight : flights) {
+      sb.append(flight);
+      sb.append("\n");
+    }
+    alerter.alert(sb.toString());
+  }
+
+  private void alert(Throwable ex) {
+    alerter.alert(ex.toString());
   }
 
   @Override
