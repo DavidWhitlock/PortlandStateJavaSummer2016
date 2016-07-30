@@ -63,7 +63,15 @@
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">public</strong> Response removeAllMappings() <strong class="jxr_keyword">throws</strong> IOException {
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">return</strong> delete(<strong class="jxr_keyword">this</strong>.url);
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>      }
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  }
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">public</strong> Response prettyPrintAppointmentBook(String owner) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">return</strong> get(<strong class="jxr_keyword">this</strong>.url, <span class="jxr_string">"owner"</span>, owner);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">public</strong> Response createAppointment(String owner, String description, String beginTime, String endTime) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">return</strong> post(<strong class="jxr_keyword">this</strong>.url, <span class="jxr_string">"owner"</span>, owner, <span class="jxr_string">"description"</span>, description, <span class="jxr_string">"beginTime"</span>, beginTime, <span class="jxr_string">"endTime"</span>, endTime);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      }
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016 <a href="http://www.pdx.edu">Portland State University</a>. All rights reserved.</div>
