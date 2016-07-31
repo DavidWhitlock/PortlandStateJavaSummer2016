@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class PingServiceSyncProxyIT extends HttpRequestHelper {
+public class AppointmentBookServiceSyncProxyIT extends HttpRequestHelper {
 
   private final int httpPort = Integer.getInteger("http.port", 8080);
   private String webAppUrl = "http://localhost:" + httpPort + "/apptbook";
@@ -22,7 +22,7 @@ public class PingServiceSyncProxyIT extends HttpRequestHelper {
   }
 
   @Test
-  public void canInvokePingServiceWithGwtSyncProxy() {
+  public void canInvokeAppointmentBookServiceWithGwtSyncProxy() {
     String moduleName = "apptbook";
     SyncProxy.setBaseURL(this.webAppUrl + "/" + moduleName + "/");
 
