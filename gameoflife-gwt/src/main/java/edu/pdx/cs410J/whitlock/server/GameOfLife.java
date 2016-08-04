@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock.server;
 
 import com.google.common.annotations.VisibleForTesting;
+import edu.pdx.cs410J.whitlock.client.Generation;
 
 import java.io.*;
 
@@ -177,5 +178,9 @@ public class GameOfLife {
     }
 
     return game;
+  }
+
+  public Generation getCurrentGeneration() {
+    return new Generation(this.grid);
   }
 }

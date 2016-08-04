@@ -3,13 +3,21 @@ package edu.pdx.cs410J.whitlock.client;
 import java.io.Serializable;
 
 public class Generation implements Serializable {
-  private int numberOfRows = 3;
+  private char[][] grid;
+
+  public Generation() {
+
+  }
+
+  public Generation(char[][] grid) {
+    this.grid = grid;
+  }
 
   public int getNumberOfRows() {
-    return numberOfRows;
+    return this.grid.length;
   }
 
   public char[] getRow(int row) {
-    return "*.*.*".toCharArray();
+    return this.grid[row];
   }
 }

@@ -11,7 +11,8 @@ public class GenerationServiceImpl extends RemoteServiceServlet implements Gener
 {
   @Override
   public Generation createNewGameOfLife(int numberOfRows, int numberOfColumns) {
-    return new Generation();
+    GameOfLife game = new GameOfLife(numberOfRows, numberOfColumns);
+    return game.getCurrentGeneration();
   }
 
   @Override
