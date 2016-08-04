@@ -23,6 +23,7 @@
     <module>rpn-calculator</module>
     <module>apptbook-gwt</module>
     <module>gameoflife</module>
+    <module>gameoflife-gwt</module>
   </modules>
   <inceptionYear>2016</inceptionYear>
   <organization>
