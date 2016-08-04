@@ -11,10 +11,19 @@ import java.util.Random;
  */
 public class GenerationServiceImpl extends RemoteServiceServlet implements GenerationService
 {
+
+  private GameOfLife game;
+
   @Override
   public Generation createNewGameOfLife(int numberOfRows, int numberOfColumns) {
-    GameOfLife game = new GameOfLife(numberOfRows, numberOfColumns);
+    game = new GameOfLife(numberOfRows, numberOfColumns);
     populateGameWithRandomCells(game);
+    return game.getCurrentGeneration();
+  }
+
+  @Override
+  public Generation getNextGeneration() {
+    this.game.computeNextGeneration();
     return game.getCurrentGeneration();
   }
 

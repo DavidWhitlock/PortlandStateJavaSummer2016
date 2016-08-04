@@ -11,4 +11,6 @@ public interface GenerationServiceAsync {
    * Return the current date/time on the server
    */
   void createNewGameOfLife(int numberOfRows, int numberOfColumns, AsyncCallback<Generation> async);
+
+  void getNextGeneration(AsyncCallback<Generation> async);
 }

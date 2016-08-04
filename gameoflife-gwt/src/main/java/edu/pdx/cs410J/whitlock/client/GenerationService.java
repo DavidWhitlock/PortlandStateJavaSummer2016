@@ -16,4 +16,5 @@ public interface GenerationService extends RemoteService {
    */
   public Generation createNewGameOfLife(int numberOfRows, int numberOfColumns);
 
+  public Generation getNextGeneration();
 }

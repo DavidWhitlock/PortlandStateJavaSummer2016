@@ -18,9 +18,12 @@ public class GameOfLifeGwt implements EntryPoint {
   @VisibleForTesting
   Button startGame;
 
+  Button nextGeneration;
+
   TextBox numberOfRows;
   TextBox numberOfColumns;
   TextArea grid;
+  private GenerationServiceAsync generationService;
 
   public GameOfLifeGwt() {
     this(new Alerter() {
@@ -39,6 +42,8 @@ public class GameOfLifeGwt implements EntryPoint {
   }
 
   private void addWidgets() {
+    generationService = GWT.create(GenerationService.class);
+
     startGame = new Button("Start new Game of Life");
     startGame.addClickHandler(new ClickHandler() {
       @Override
@@ -55,6 +60,29 @@ public class GameOfLifeGwt implements EntryPoint {
     showOnly3Charaters(numberOfRows);
 
     this.grid = new TextArea();
+
+    this.nextGeneration = new Button("Compute Next Generation");
+    this.nextGeneration.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+        displayNextGeneration();
+      }
+    });
+  }
+
+  private void displayNextGeneration() {
+    this.generationService.getNextGeneration(new AsyncCallback<Generation>() {
+      @Override
+      public void onFailure(Throwable throwable) {
+        alert(throwable);
+      }
+
+      @Override
+      public void onSuccess(Generation generation) {
+        displayGeneration(generation);
+      }
+    });
+
   }
 
   private void createGrid() {
@@ -85,12 +113,11 @@ public class GameOfLifeGwt implements EntryPoint {
     int numberOfRows = getNumberOfRows();
     int numberOfColumns = getNumberOfColumns();
 
-    GenerationServiceAsync async = GWT.create(GenerationService.class);
-    async.createNewGameOfLife(numberOfRows, numberOfColumns, new AsyncCallback<Generation>() {
+    generationService.createNewGameOfLife(numberOfRows, numberOfColumns, new AsyncCallback<Generation>() {
 
       @Override
       public void onFailure(Throwable ex) {
-        alerter.alert(ex.toString());
+        alert(ex);
       }
 
       @Override
@@ -99,6 +126,10 @@ public class GameOfLifeGwt implements EntryPoint {
       }
 
     });
+  }
+
+  private void alert(Throwable ex) {
+    alerter.alert(ex.toString());
   }
 
   private void displayGeneration(Generation generation) {
@@ -122,6 +153,7 @@ public class GameOfLifeGwt implements EntryPoint {
     input.add(new Label("by Columns"));
     input.add(numberOfColumns);
     input.add(startGame);
+    input.add(nextGeneration);
 
     DockPanel panel = new DockPanel();
     panel.add(input, DockPanel.NORTH);
