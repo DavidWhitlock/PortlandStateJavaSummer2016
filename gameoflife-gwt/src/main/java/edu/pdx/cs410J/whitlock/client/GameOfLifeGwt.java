@@ -62,6 +62,7 @@ public class GameOfLifeGwt implements EntryPoint {
     this.grid = new TextArea();
 
     this.nextGeneration = new Button("Compute Next Generation");
+    this.nextGeneration.setEnabled(false);
     this.nextGeneration.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
@@ -141,6 +142,8 @@ public class GameOfLifeGwt implements EntryPoint {
     }
 
     this.grid.setText(sb.toString());
+
+    this.nextGeneration.setEnabled(true);
   }
 
   @Override
