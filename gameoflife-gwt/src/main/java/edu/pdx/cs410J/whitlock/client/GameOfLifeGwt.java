@@ -22,6 +22,7 @@ public class GameOfLifeGwt implements EntryPoint {
 
   TextBox numberOfRows;
   TextBox numberOfColumns;
+  TextArea grid;
 
   public GameOfLifeGwt() {
     this(new Alerter() {
@@ -44,6 +45,7 @@ public class GameOfLifeGwt implements EntryPoint {
     startGame.addClickHandler(new ClickHandler() {
       @Override
       public void onClick(ClickEvent clickEvent) {
+        createGrid();
         pingServer();
       }
     });
@@ -53,6 +55,19 @@ public class GameOfLifeGwt implements EntryPoint {
 
     numberOfRows = new TextBox();
     showOnly3Charaters(numberOfRows);
+
+    this.grid = new TextArea();
+  }
+
+  private void createGrid() {
+    int numberOfRows = parseInteger(this.numberOfRows.getText());
+    int numberOfColumns = parseInteger(this.numberOfColumns.getText());
+    this.grid.setCharacterWidth(numberOfColumns);
+    this.grid.setVisibleLines(numberOfRows);
+  }
+
+  private int parseInteger(String text) {
+    return Integer.parseInt(text);
   }
 
   private static void showOnly3Charaters(TextBox numberOfColumns) {
@@ -86,12 +101,17 @@ public class GameOfLifeGwt implements EntryPoint {
   public void onModuleLoad() {
     RootPanel rootPanel = RootPanel.get();
 
-    HorizontalPanel panel = new HorizontalPanel();
-    panel.add(new Label("Rows"));
-    panel.add(numberOfRows);
-    panel.add(new Label("by Columns"));
-    panel.add(numberOfColumns);
-    panel.add(startGame);
+    HorizontalPanel input = new HorizontalPanel();
+    input.add(new Label("Rows"));
+    input.add(numberOfRows);
+    input.add(new Label("by Columns"));
+    input.add(numberOfColumns);
+    input.add(startGame);
+
+    DockPanel panel = new DockPanel();
+    panel.add(input, DockPanel.NORTH);
+
+    panel.add(this.grid, DockPanel.CENTER);
 
     rootPanel.add(panel);
   }
