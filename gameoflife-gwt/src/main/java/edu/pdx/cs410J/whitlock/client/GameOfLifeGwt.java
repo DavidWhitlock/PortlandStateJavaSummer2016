@@ -5,6 +5,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
@@ -19,11 +22,14 @@ public class GameOfLifeGwt implements EntryPoint {
   Button startGame;
 
   Button nextGeneration;
+  ToggleButton automaticallyAdvance;
 
   TextBox numberOfRows;
   TextBox numberOfColumns;
   TextArea grid;
   private GenerationServiceAsync generationService;
+
+  Timer timer;
 
   public GameOfLifeGwt() {
     this(new Alerter() {
@@ -69,6 +75,35 @@ public class GameOfLifeGwt implements EntryPoint {
         displayNextGeneration();
       }
     });
+
+    this.automaticallyAdvance = new ToggleButton("Start", "Stop");
+    this.automaticallyAdvance.setEnabled(false);
+    this.automaticallyAdvance.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+      @Override
+      public void onValueChange(ValueChangeEvent<Boolean> event) {
+        if (event.getValue()) {
+          startAutomaticAdvancement();
+
+        } else {
+          stopAutomaticAdvancement();
+        }
+      }
+    });
+
+    this.timer = new Timer() {
+      @Override
+      public void run() {
+        displayNextGeneration();
+      }
+    };
+  }
+
+  private void stopAutomaticAdvancement() {
+    this.timer.cancel();
+  }
+
+  private void startAutomaticAdvancement() {
+    this.timer.scheduleRepeating(500);
   }
 
   private void displayNextGeneration() {
@@ -144,6 +179,7 @@ public class GameOfLifeGwt implements EntryPoint {
     this.grid.setText(sb.toString());
 
     this.nextGeneration.setEnabled(true);
+    this.automaticallyAdvance.setEnabled(true);
   }
 
   @Override
@@ -157,6 +193,7 @@ public class GameOfLifeGwt implements EntryPoint {
     input.add(numberOfColumns);
     input.add(startGame);
     input.add(nextGeneration);
+    input.add(automaticallyAdvance);
 
     DockPanel panel = new DockPanel();
     panel.add(input, DockPanel.NORTH);
