@@ -23,8 +23,8 @@ public class AppointmentBookGwtIT extends GWTTestCase {
   public void testClickingButtonAlertsWithAppointmentInformation() {
     final CapturingAlerter alerter = new CapturingAlerter();
 
-    AppointmentBookGwt ui = new AppointmentBookGwt(alerter);
-    click(ui.button);
+    GameOfLifeGwt ui = new GameOfLifeGwt(alerter);
+    click(ui.startGame);
 
     Timer verify = new Timer() {
       @Override
@@ -56,7 +56,7 @@ public class AppointmentBookGwtIT extends GWTTestCase {
     DomEvent.fireNativeEvent(event, button);
   }
 
-  private class CapturingAlerter implements AppointmentBookGwt.Alerter {
+  private class CapturingAlerter implements GameOfLifeGwt.Alerter {
     private String message;
 
     @Override
