@@ -183,4 +183,8 @@ public class GameOfLife {
   public Generation getCurrentGeneration() {
     return new Generation(this.grid);
   }
+
+  public int getColumnCount() {
+    return columnCount;
+  }
 }
