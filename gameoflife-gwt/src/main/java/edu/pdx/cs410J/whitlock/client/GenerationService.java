@@ -7,11 +7,13 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  * A GWT remote service that returns a dummy appointment book
  */
 @RemoteServiceRelativePath("ping")
-public interface PingService extends RemoteService {
+public interface GenerationService extends RemoteService {
 
   /**
    * Returns the current date and time on the server
+   * @param numberOfRows
+   * @param numberOfColumns
    */
-  public AppointmentBook ping();
+  public Generation createNewGameOfLife(int numberOfRows, int numberOfColumns);
 
 }

@@ -5,10 +5,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * The client-side interface to the ping service
  */
-public interface PingServiceAsync {
+public interface GenerationServiceAsync {
 
   /**
    * Return the current date/time on the server
    */
-  void ping(AsyncCallback<AppointmentBook> async);
+  void createNewGameOfLife(int numberOfRows, int numberOfColumns, AsyncCallback<Generation> async);
 }

@@ -9,8 +9,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
-import java.util.Collection;
-
 /**
  * A basic GWT class that makes sure that we can send an appointment book back from the server
  */
@@ -46,7 +44,7 @@ public class GameOfLifeGwt implements EntryPoint {
       @Override
       public void onClick(ClickEvent clickEvent) {
         createGrid();
-        pingServer();
+        startNewGameOfLife();
       }
     });
 
@@ -60,10 +58,18 @@ public class GameOfLifeGwt implements EntryPoint {
   }
 
   private void createGrid() {
-    int numberOfRows = parseInteger(this.numberOfRows.getText());
-    int numberOfColumns = parseInteger(this.numberOfColumns.getText());
+    int numberOfRows = getNumberOfRows();
+    int numberOfColumns = getNumberOfColumns();
     this.grid.setCharacterWidth(numberOfColumns);
     this.grid.setVisibleLines(numberOfRows);
+  }
+
+  private int getNumberOfColumns() {
+    return parseInteger(this.numberOfColumns.getText());
+  }
+
+  private int getNumberOfRows() {
+    return parseInteger(this.numberOfRows.getText());
   }
 
   private int parseInteger(String text) {
@@ -75,9 +81,12 @@ public class GameOfLifeGwt implements EntryPoint {
     numberOfColumns.setVisibleLength(3);
   }
 
-  private void pingServer() {
-    PingServiceAsync async = GWT.create(PingService.class);
-    async.ping(new AsyncCallback<AppointmentBook>() {
+  private void startNewGameOfLife() {
+    int numberOfRows = getNumberOfRows();
+    int numberOfColumns = getNumberOfColumns();
+
+    GenerationServiceAsync async = GWT.create(GenerationService.class);
+    async.createNewGameOfLife(numberOfRows, numberOfColumns, new AsyncCallback<Generation>() {
 
       @Override
       public void onFailure(Throwable ex) {
@@ -85,16 +94,22 @@ public class GameOfLifeGwt implements EntryPoint {
       }
 
       @Override
-      public void onSuccess(AppointmentBook airline) {
-        StringBuilder sb = new StringBuilder(airline.toString());
-        Collection<Appointment> flights = airline.getAppointments();
-        for (Appointment flight : flights) {
-          sb.append(flight);
-          sb.append("\n");
-        }
-        alerter.alert(sb.toString());
+      public void onSuccess(Generation generation) {
+        displayGeneration(generation);
       }
+
     });
+  }
+
+  private void displayGeneration(Generation generation) {
+    StringBuilder sb = new StringBuilder();
+
+    for (int row = 0; row < generation.getNumberOfRows(); row++) {
+      sb.append(generation.getRow(row));
+      sb.append("\n");
+    }
+
+    this.grid.setText(sb.toString());
   }
 
   @Override
